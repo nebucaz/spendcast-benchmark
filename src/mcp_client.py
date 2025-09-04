@@ -1,6 +1,5 @@
 """MCP (Model Context Protocol) client for tool integration."""
 
-import asyncio
 import logging
 import os
 import subprocess
@@ -23,9 +22,10 @@ class MCPServerConfig:
         self.command = config.get("command", "")
         self.args = config.get("args", [])
         self.env = config.get("env", {})
+        self.cwd = config.get("cwd", None)
     
     def __repr__(self):
-        return f"MCPServerConfig(name='{self.name}', command='{self.command}', args={self.args})"
+        return f"MCPServerConfig(name='{self.name}', command='{self.command}', args={self.args}, cwd='{self.cwd}')"
 
 
 class MCPClient:

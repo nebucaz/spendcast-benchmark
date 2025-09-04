@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from .mcp_server_manager import MCPServerManager
+from .mcp_subprocess_manager import MCPSubprocessManager
 from .llm_client import LLMClient
 from .intelligent_agent import IntelligentAgent
 from .conversation import Conversation
@@ -23,7 +23,7 @@ class WebServer:
     def __init__(self):
         """Initialize the web server."""
         self.app = FastAPI(title="Spendcast Benchmark Chatbot", version="1.0.0")
-        self.mcp_manager: Optional[MCPServerManager] = None
+        self.mcp_manager: Optional[MCPSubprocessManager] = None
         self.llm_client: Optional[LLMClient] = None
         self.intelligent_agent: Optional[IntelligentAgent] = None
         self.active_connections: List[WebSocket] = []
@@ -51,10 +51,19 @@ class WebServer:
         @self.app.get("/api/status")
         async def get_status():
             """Get server status."""
+            if not self.mcp_manager:
+                return {
+                    "status": "running",
+                    "mcp_servers": 0,
+                    "tools_available": 0,
+                    "llm_ready": self.llm_client is not None
+                }
+            
+            tools = await self.mcp_manager.get_available_tools()
             return {
                 "status": "running",
-                "mcp_servers": len(self.mcp_manager.servers) if self.mcp_manager else 0,
-                "tools_available": len(self.mcp_manager.get_available_tools()) if self.mcp_manager else 0,
+                "mcp_servers": len(self.mcp_manager.processes),
+                "tools_available": len(tools),
                 "llm_ready": self.llm_client is not None
             }
         
@@ -65,11 +74,13 @@ class WebServer:
                 return {"servers": []}
             
             servers = []
-            for server_name, mcp_client in self.mcp_manager.servers.items():
+            status = self.mcp_manager.get_server_status()
+            for server_name, server_status in status.items():
                 servers.append({
                     "name": server_name,
-                    "status": "running" if mcp_client.session else "stopped",
-                    "tools": len(self.mcp_manager.get_tools_by_server(server_name))
+                    "status": "running" if server_status["running"] else "stopped",
+                    "pid": server_status.get("pid", None),
+                    "mcp_connected": server_status["mcp_connected"]
                 })
             
             return {"servers": servers}
@@ -81,7 +92,8 @@ class WebServer:
                 return {"tools": []}
             
             tools = []
-            for tool in self.mcp_manager.get_available_tools():
+            available_tools = await self.mcp_manager.get_available_tools()
+            for tool in available_tools:
                 tools.append({
                     "name": tool.name,
                     "description": tool.description,
@@ -351,8 +363,8 @@ class WebServer:
     async def setup(self):
         """Setup the web server components."""
         try:
-            # Initialize MCP server manager
-            self.mcp_manager = MCPServerManager()
+            # Initialize MCP subprocess manager
+            self.mcp_manager = MCPSubprocessManager()
             await self.mcp_manager.start_all_servers()
             
             # Initialize LLM client

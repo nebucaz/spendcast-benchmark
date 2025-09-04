@@ -4,7 +4,6 @@ import asyncio
 import logging
 import re
 from typing import List, Dict, Any, Optional
-from .mcp_server_manager import MCPServerManager
 from .llm_client import LLMClient
 
 logger = logging.getLogger(__name__)
@@ -13,7 +12,7 @@ logger = logging.getLogger(__name__)
 class IntelligentAgent:
     """Coordinates communication between user, LLM, and MCP servers."""
     
-    def __init__(self, llm_client: LLMClient, mcp_manager: MCPServerManager):
+    def __init__(self, llm_client: LLMClient, mcp_manager):
         """Initialize the intelligent agent."""
         self.llm_client = llm_client
         self.mcp_manager = mcp_manager
@@ -74,7 +73,7 @@ class IntelligentAgent:
     
     async def determine_needed_tools(self, user_query: str, needed_resources: List[str]) -> List[str]:
         """Phase 1: Determine what tools are needed for this request."""
-        available_tools = self.mcp_manager.get_available_tools()
+        available_tools = await self.mcp_manager.get_available_tools()
         
         if not available_tools:
             logger.info("No tools available, skipping tool determination")
@@ -106,7 +105,7 @@ class IntelligentAgent:
     
     async def execute_with_context(self, user_query: str, needed_resources: List[str], needed_tools: List[str]) -> str:
         """Phase 2: Execute the request with gathered context."""
-        available_tools = self.mcp_manager.get_available_tools()
+        available_tools = await self.mcp_manager.get_available_tools()
         
         # Filter tools to only those that are needed
         relevant_tools = [tool for tool in available_tools if tool.name in needed_tools]
@@ -137,7 +136,8 @@ class IntelligentAgent:
     
     async def _process_tool_calls(self, response: str) -> str:
         """Process tool calls in the LLM response."""
-        if not self.mcp_manager.get_available_tools():
+        available_tools = await self.mcp_manager.get_available_tools()
+        if not available_tools:
             return response
         
         # Look for tool call patterns in the response

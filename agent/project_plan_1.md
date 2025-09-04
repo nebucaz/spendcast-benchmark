@@ -106,25 +106,25 @@ Status: ✅ Completed
 - Web Interface is tested by human ✅
 
 ### Note
-- Web interface is fully functional and tested
+- Web interface cann not be tested because of MCP-servers blocking executionen askinols,
 - MCP server blocking issue will be resolved in Story 1.6
 
 ## Story 1.6 MCP Server Lifecycle Management
-Status: ⏳ Pending
+Status: ✅ Completed
 
 ### Acceptance criteria
-- The main script must read the MCP configuration file and launch each MCP server listed.
-- MCP servers must be started as subprocesses so the main script remains non-blocking.
-- Each subprocess must expose stdin, stdout, and stderr streams for communication and logging.
-- The agent must connect to the MCP servers using their stdio streams via the MCP Client.
-- The main script must keep references to the subprocess handles in order to:
-  - Monitor for crashes/failures.
-  - Restart or shut down servers gracefully when needed.
-  - Starting the MCP servers must not interfere with starting the web server or handling user prompts.
-- Logs from MCP servers (stderr) must be captured and made available for debugging.
+- The main script must read the MCP configuration file and launch each MCP server listed. ✅
+- MCP servers must be started as subprocesses so the main script remains non-blocking. ✅
+- Each subprocess must expose stdin, stdout, and stderr streams for communication and logging. ✅
+- The agent must connect to the MCP servers using their stdio streams via the MCP Client. ✅
+- The main script must keep references to the subprocess handles in order to: ✅
+  - Monitor for crashes/failures. ✅
+  - Restart or shut down servers gracefully when needed. ✅
+  - Starting the MCP servers must not interfere with starting the web server or handling user prompts. ✅
+- Logs from MCP servers (stderr) must be captured and made available for debugging. ✅
 
 ### Technical Implementation
-- Use Python’s subprocess.Popen to start each MCP server defined in the config.
+- Use Python's subprocess.Popen to start each MCP server defined in the config. ✅
 Example:
 ```
 proc = subprocess.Popen(
@@ -135,11 +135,11 @@ proc = subprocess.Popen(
     text=True
 )
 ```
-- Store process handles in a registry (e.g., dict keyed by server name).
-- Wrap stdout/stderr in non-blocking readers (e.g., asyncio.create_task or threading.Thread with a queue).
-- Initialize MCP Client with the stdin/stdout pipes of each subprocess.
-- After all MCP servers are started, launch the web server (e.g., FastAPI, Flask).
-- Ensure the main script handles signals (SIGINT/SIGTERM) to shut down MCP servers cleanly.
+- Store process handles in a registry (e.g., dict keyed by server name). ✅
+- Wrap stdout/stderr in non-blocking readers (e.g., asyncio.create_task or threading.Thread with a queue). ✅
+- Initialize MCP Client with the stdin/stdout pipes of each subprocess. ✅
+- After all MCP servers are started, launch the web server (e.g., FastAPI, Flask). ✅
+- Ensure the main script handles signals (SIGINT/SIGTERM) to shut down MCP servers cleanly. ✅
 
 ### Testing
 1. Unit tests:

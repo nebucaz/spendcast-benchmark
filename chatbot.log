@@ -32635,3 +32635,298 @@ RuntimeError: Attempted to exit cancel scope in a different task than it was ent
 2025-09-04 13:15:00,009 - src.llm_client - INFO - Default model not available, using: mistral:7b
 2025-09-04 13:15:00,009 - src.llm_client - INFO - LLM client ready with model: mistral:7b
 2025-09-04 13:15:00,009 - src.web_server - INFO - Web server setup complete
+2025-09-04 13:46:20,383 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 13:46:20,463 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 13:46:20,463 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 13:46:22,472 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 13:46:22,473 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 13:46:22,473 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 13:46:22,473 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 13:46:22,539 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 13:46:22,539 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 13:46:22,539 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 13:46:22,539 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 13:46:22,539 - src.web_server - INFO - Web server setup complete
+2025-09-04 13:46:22,563 - src.mcp_subprocess_manager - INFO - Stopping all MCP servers...
+2025-09-04 13:46:22,563 - src.mcp_subprocess_manager - INFO - Stopping MCP server: spendcast-graphdb
+2025-09-04 13:46:22,567 - src.mcp_subprocess_manager - INFO - Stopped MCP server: spendcast-graphdb
+2025-09-04 13:46:22,568 - src.mcp_subprocess_manager - INFO - All MCP servers stopped
+2025-09-04 13:55:41,498 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 13:55:41,568 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 13:55:41,568 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 13:55:43,575 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 13:55:43,575 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 13:55:43,575 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 13:55:43,576 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 13:55:43,645 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 13:55:43,645 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 13:55:43,645 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 13:55:43,645 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 13:55:43,645 - src.web_server - INFO - Web server setup complete
+2025-09-04 13:56:04,104 - src.intelligent_agent - INFO - Processing user request: Tell me, what tools are available
+2025-09-04 13:56:04,105 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 13:56:04,105 - src.intelligent_agent - ERROR - Error processing user request: 'coroutine' object is not iterable
+2025-09-04 13:56:04,105 - src.intelligent_agent - ERROR - Exception type: <class 'TypeError'>
+2025-09-04 13:56:04,107 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 28, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 89, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 199, in _format_available_tools
+    for tool in tools:
+                ^^^^^
+TypeError: 'coroutine' object is not iterable
+
+2025-09-04 13:56:14,061 - src.intelligent_agent - INFO - Processing user request: hello
+2025-09-04 13:56:14,064 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 13:56:14,064 - src.intelligent_agent - ERROR - Error processing user request: 'coroutine' object is not iterable
+2025-09-04 13:56:14,064 - src.intelligent_agent - ERROR - Exception type: <class 'TypeError'>
+2025-09-04 13:56:14,065 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 28, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 89, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 199, in _format_available_tools
+    for tool in tools:
+                ^^^^^
+TypeError: 'coroutine' object is not iterable
+
+2025-09-04 13:57:30,990 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 13:57:31,065 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 13:57:31,066 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 13:57:33,070 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 13:57:33,070 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 13:57:33,070 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 13:57:33,070 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 13:57:33,122 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 13:57:33,123 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 13:57:33,123 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 13:57:33,123 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 13:57:33,123 - src.web_server - INFO - Web server setup complete
+2025-09-04 13:57:33,143 - src.mcp_subprocess_manager - INFO - Stopping all MCP servers...
+2025-09-04 13:57:33,143 - src.mcp_subprocess_manager - INFO - Stopping MCP server: spendcast-graphdb
+2025-09-04 13:57:33,147 - src.mcp_subprocess_manager - INFO - Stopped MCP server: spendcast-graphdb
+2025-09-04 13:57:33,147 - src.mcp_subprocess_manager - INFO - All MCP servers stopped
+2025-09-04 13:57:39,957 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 13:57:54,842 - src.intelligent_agent - INFO - Processing user request: Hello, can you help me?
+2025-09-04 13:57:54,842 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 13:57:54,842 - src.intelligent_agent - ERROR - Error processing user request: 'coroutine' object is not iterable
+2025-09-04 13:57:54,842 - src.intelligent_agent - ERROR - Exception type: <class 'TypeError'>
+2025-09-04 13:57:54,843 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 28, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 89, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 199, in _format_available_tools
+    formatted = []
+                ^^^
+TypeError: 'coroutine' object is not iterable
+
+2025-09-04 13:59:22,672 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 13:59:22,743 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 13:59:22,743 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 13:59:24,748 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 13:59:24,748 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 13:59:24,748 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 13:59:24,748 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 13:59:24,804 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 13:59:24,804 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 13:59:24,804 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 13:59:24,804 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 13:59:24,804 - src.web_server - INFO - Web server setup complete
+2025-09-04 13:59:31,563 - src.intelligent_agent - INFO - Processing user request: Hello, can you help me?
+2025-09-04 13:59:31,564 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 13:59:31,564 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 13:59:31,564 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 13:59:31,564 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 13:59:31,564 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 13:59:40,812 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 13:59:40,813 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 13:59:40,814 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 14:00:27,205 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:00:27,272 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:00:27,272 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:00:29,278 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 14:00:29,278 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 14:00:29,278 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 14:00:29,278 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 14:00:29,325 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:00:29,325 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:00:29,325 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:00:29,325 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:00:29,325 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:00:29,344 - src.mcp_subprocess_manager - INFO - Stopping all MCP servers...
+2025-09-04 14:00:29,344 - src.mcp_subprocess_manager - INFO - Stopping MCP server: spendcast-graphdb
+2025-09-04 14:00:29,348 - src.mcp_subprocess_manager - INFO - Stopped MCP server: spendcast-graphdb
+2025-09-04 14:00:29,348 - src.mcp_subprocess_manager - INFO - All MCP servers stopped
+2025-09-04 14:00:36,734 - src.intelligent_agent - INFO - Processing user request: what tools are available?
+2025-09-04 14:00:36,735 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 14:00:36,735 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 14:00:36,736 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 14:00:36,736 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 14:00:36,736 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 14:00:43,134 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 14:00:43,136 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 14:00:43,136 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 14:29:22,942 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:29:23,015 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:29:23,015 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:29:25,019 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 14:29:25,020 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 14:29:25,020 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 14:29:25,020 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 14:29:25,079 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:29:25,080 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:29:25,080 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:29:25,080 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:29:25,080 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:30:57,017 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:30:57,086 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:30:57,086 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:30:57,086 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 14:32:36,707 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-04 14:32:36,707 - src.mcp_subprocess_manager - ERROR - Failed to connect MCP server: spendcast-graphdb
+2025-09-04 14:32:36,707 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:32:36,707 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:32:36,759 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:32:36,759 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:32:36,759 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:32:36,759 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:32:36,760 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:32:38,913 - src.mcp_subprocess_manager - INFO - Stopping all MCP servers...
+2025-09-04 14:32:38,913 - src.mcp_subprocess_manager - INFO - All MCP servers stopped
+2025-09-04 14:36:40,008 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:36:40,084 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:36:40,084 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:36:40,084 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server spendcast-graphdb: 'MCPServerConfig' object has no attribute 'cwd'
+2025-09-04 14:36:40,084 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:36:40,084 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:36:40,134 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:36:40,134 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:36:40,134 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:36:40,134 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:36:40,134 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:37:33,115 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:37:33,197 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:37:33,197 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:37:33,197 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server spendcast-graphdb: 'MCPServerConfig' object has no attribute 'cwd'
+2025-09-04 14:37:33,197 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:37:33,197 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:37:33,257 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:37:33,257 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:37:33,257 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:37:33,257 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:37:33,257 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:38:07,498 - src.intelligent_agent - INFO - Processing user request: tell me what tools are available
+2025-09-04 14:38:07,501 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 14:38:07,502 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 14:38:07,502 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 14:38:25,370 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 14:38:25,371 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 14:38:59,314 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:38:59,382 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:38:59,382 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:38:59,382 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server spendcast-graphdb: 'MCPServerConfig' object has no attribute 'cwd'
+2025-09-04 14:38:59,382 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:38:59,383 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:38:59,430 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:38:59,430 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:38:59,430 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:38:59,430 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:38:59,430 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:39:41,446 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:39:41,522 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:39:41,522 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:39:41,522 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server spendcast-graphdb: 'MCPServerConfig' object has no attribute 'cwd'
+2025-09-04 14:39:41,522 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:39:41,522 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:39:41,572 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:39:41,573 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:39:41,573 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:39:41,573 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:39:41,573 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:40:33,076 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:40:33,146 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:40:33,146 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:40:33,146 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server spendcast-graphdb: 'MCPServerConfig' object has no attribute 'cwd'
+2025-09-04 14:40:33,146 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:40:33,146 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:40:33,201 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:40:33,201 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:40:33,201 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:40:33,201 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:40:33,201 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:41:35,563 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:41:35,631 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:41:35,631 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:41:35,631 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server spendcast-graphdb: 'MCPServerConfig' object has no attribute 'cwd'
+2025-09-04 14:41:35,631 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:41:35,631 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:41:35,678 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:41:35,679 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:41:35,679 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:41:35,679 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:41:35,679 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:44:12,691 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:44:12,767 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:44:12,767 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:44:13,772 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 14:44:13,774 - src.mcp_subprocess_client - ERROR - Failed to connect to subprocess: "StdioServerParameters" object has no field "stdin"
+2025-09-04 14:44:13,774 - src.mcp_subprocess_manager - ERROR - Failed to connect to MCP subprocess: spendcast-graphdb
+2025-09-04 14:44:13,775 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:44:13,775 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:44:13,831 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:44:13,831 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:44:13,831 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:44:13,831 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:44:13,831 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:44:14,772 - src.mcp_subprocess_manager - ERROR - MCP server spendcast-graphdb has crashed (exit code: 143)
+2025-09-04 14:47:25,846 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:47:25,913 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:47:25,913 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:47:25,913 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 14:47:35,025 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-04 14:47:35,026 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:47:35,026 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 14:47:35,026 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 14:47:35,069 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:47:35,070 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:47:35,070 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:47:35,070 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:47:35,070 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:47:35,288 - src.mcp_subprocess_manager - INFO - Stopping all MCP servers...
+2025-09-04 14:47:35,288 - src.mcp_subprocess_manager - INFO - All MCP servers stopped
+2025-09-04 14:49:01,980 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 14:49:02,045 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 14:49:02,045 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 14:49:03,049 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 14:49:03,049 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 14:49:03,050 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 14:49:03,050 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 14:49:03,090 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 14:49:03,090 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 14:49:03,090 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 14:49:03,090 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 14:49:03,090 - src.web_server - INFO - Web server setup complete
+2025-09-04 14:49:34,831 - src.intelligent_agent - INFO - Processing user request: what tools are available?
+2025-09-04 14:49:34,831 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 14:49:37,270 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 14:49:37,270 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-04 14:49:37,270 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-04 14:49:45,820 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 14:49:45,821 - src.intelligent_agent - ERROR - Failed to parse tool parameters: Extra data: line 3 column 1 (char 32)
+2025-09-04 14:49:45,821 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 14:50:17,677 - src.intelligent_agent - INFO - Processing user request: I want to know the names of the persons in the spendcast dataset
+2025-09-04 14:50:17,679 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 14:50:18,588 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 14:50:18,589 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_get_schema']
+2025-09-04 14:50:18,589 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-04 14:50:23,858 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 14:50:23,859 - src.intelligent_agent - INFO - Executing tool call: spendcast_get_schema with params: {}
+2025-09-04 14:50:23,859 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
