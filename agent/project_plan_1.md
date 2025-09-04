@@ -110,7 +110,7 @@ Status: ✅ Completed
 - MCP server blocking issue will be resolved in Story 1.6
 
 ## Story 1.6 MCP Server Lifecycle Management
-Status: ✅ Completed
+Status: 🔄 In Progress
 
 ### Acceptance criteria
 - The main script must read the MCP configuration file and launch each MCP server listed. ✅
@@ -140,6 +140,116 @@ proc = subprocess.Popen(
 - Initialize MCP Client with the stdin/stdout pipes of each subprocess. ✅
 - After all MCP servers are started, launch the web server (e.g., FastAPI, Flask). ✅
 - Ensure the main script handles signals (SIGINT/SIGTERM) to shut down MCP servers cleanly. ✅
+
+**Example Code**
+
+````
+import subprocess
+import signal
+import sys
+import time
+import threading
+import yaml
+from pathlib import Path
+
+# ---------------------------
+# Helpers
+# ---------------------------
+
+class MCPServerProcess:
+    def __init__(self, name, cmd, args):
+        self.name = name
+        self.cmd = cmd
+        self.args = args
+        self.proc = None
+        self.stdout_thread = None
+        self.stderr_thread = None
+
+    def start(self):
+        print(f"[INFO] Starting MCP server: {self.name}")
+        self.proc = subprocess.Popen(
+            [self.cmd] + self.args,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            bufsize=1
+        )
+
+        # Start threads to read stdout/stderr
+        self.stdout_thread = threading.Thread(
+            target=self._stream_output, args=(self.proc.stdout, "STDOUT"), daemon=True
+        )
+        self.stderr_thread = threading.Thread(
+            target=self._stream_output, args=(self.proc.stderr, "STDERR"), daemon=True
+        )
+        self.stdout_thread.start()
+        self.stderr_thread.start()
+
+    def _stream_output(self, stream, label):
+        for line in iter(stream.readline, ""):
+            print(f"[{self.name}][{label}] {line.strip()}")
+        stream.close()
+
+    def stop(self):
+        if self.proc and self.proc.poll() is None:
+            print(f"[INFO] Stopping MCP server: {self.name}")
+            self.proc.terminate()
+            try:
+                self.proc.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                print(f"[WARN] Force killing {self.name}")
+                self.proc.kill()
+
+# ---------------------------
+# Config loader
+# ---------------------------
+
+def load_config(path="mcp_config.yaml"):
+    config_path = Path(path)
+    if not config_path.exists():
+        raise FileNotFoundError(f"Config file not found: {path}")
+    with open(config_path, "r") as f:
+        return yaml.safe_load(f)
+
+# ---------------------------
+# Main orchestration
+# ---------------------------
+
+def main():
+    config = load_config()
+    servers = []
+
+    # Start MCP servers
+    for entry in config.get("servers", []):
+        server = MCPServerProcess(
+            name=entry["name"],
+            cmd=entry["cmd"],
+            args=entry.get("args", [])
+        )
+        server.start()
+        servers.append(server)
+
+    def shutdown(signum=None, frame=None):
+        print("\n[INFO] Shutting down all MCP servers...")
+        for s in servers:
+            s.stop()
+        sys.exit(0)
+
+    # Handle signals (CTRL+C)
+    signal.signal(signal.SIGINT, shutdown)
+    signal.signal(signal.SIGTERM, shutdown)
+
+    print("[INFO] All MCP servers started. Press Ctrl+C to exit.")
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        shutdown()
+
+if __name__ == "__main__":
+    main()
+```
 
 ### Testing
 1. Unit tests:

@@ -12,14 +12,21 @@ logger = logging.getLogger(__name__)
 class IntelligentAgent:
     """Coordinates communication between user, LLM, and MCP servers."""
     
-    def __init__(self, llm_client: LLMClient, mcp_manager):
+    def __init__(self, llm_client: LLMClient, mcp_manager, web_server=None):
         """Initialize the intelligent agent."""
         self.llm_client = llm_client
         self.mcp_manager = mcp_manager
+        self.web_server = web_server
+    
+    def _log_debug(self, category: str, message: str, data: Optional[Dict[str, Any]] = None):
+        """Log debug information to the web server if available."""
+        if self.web_server:
+            self.web_server.add_debug_log(category, message, data)
         
     async def process_user_request(self, user_query: str) -> str:
         """Process a user request using the intelligent two-phase strategy."""
         logger.info(f"Processing user request: {user_query}")
+        self._log_debug("AGENT", f"Processing user request: {user_query}")
         
         try:
             # Phase 1: Determine what resources and tools are needed
@@ -27,11 +34,13 @@ class IntelligentAgent:
             needed_tools = await self.determine_needed_tools(user_query, needed_resources)
             
             logger.info(f"Phase 1 complete - Resources needed: {len(needed_resources)}, Tools needed: {len(needed_tools)}")
+            self._log_debug("AGENT", f"Phase 1 complete - Resources: {needed_resources}, Tools: {needed_tools}")
             
             # Phase 2: Execute with gathered context
             result = await self.execute_with_context(user_query, needed_resources, needed_tools)
             
             logger.info("Phase 2 complete - Request processed successfully")
+            self._log_debug("AGENT", "Phase 2 complete - Request processed successfully")
             return result
             
         except Exception as e:
@@ -65,6 +74,9 @@ class IntelligentAgent:
         if not response:
             return []
         
+        self._log_debug("AGENT->LLM", "Resource determination request", {"prompt": prompt[:200] + "..."})
+        self._log_debug("LLM->AGENT", "Resource determination response", {"response": response})
+        
         # Parse the response to extract resource names
         resource_names = self._parse_resource_selection(response)
         logger.info(f"Determined needed resources: {resource_names}")
@@ -93,9 +105,14 @@ class IntelligentAgent:
         Only respond with the tool names, nothing else.
         """
         
+        self._log_debug("AGENT->LLM", "Tool determination request", {"prompt": prompt})
+        
         response = await self.llm_client.generate_response(prompt)
         if not response:
+            self._log_debug("LLM->AGENT", "Tool determination failed", {"error": "No response generated"})
             return []
+        
+        self._log_debug("LLM->AGENT", "Tool determination response", {"response": response})
         
         # Parse the response to extract tool names
         tool_names = self._parse_tool_selection(response)
@@ -131,9 +148,14 @@ class IntelligentAgent:
         Provide a helpful response that addresses the user's request.
         """
         
+        self._log_debug("AGENT->LLM", "Execution request", {"prompt": prompt})
+        
         response = await self.llm_client.generate_response(prompt)
         if not response:
+            self._log_debug("LLM->AGENT", "Execution failed", {"error": "No response generated"})
             return "I couldn't generate a response for your request."
+        
+        self._log_debug("LLM->AGENT", "Execution response", {"response": response})
         
         # Process any tool calls in the response
         processed_response = await self._process_tool_calls(response)
@@ -172,20 +194,52 @@ class IntelligentAgent:
                 
                 if params is None:
                     tool_results.append(f"Tool '{tool_name}' parameters could not be parsed")
+                    self._log_debug("AGENT->MCP", f"Tool call request failed: {tool_name}", {
+                        "tool_name": tool_name, 
+                        "error": "Parameters could not be parsed", 
+                        "raw_params": params_str,
+                        "request_type": "tool_call",
+                        "success": False
+                    })
                     continue
                 
                 # Call the tool
                 logger.info(f"Executing tool call: {tool_name} with params: {params}")
+                self._log_debug("AGENT->MCP", f"Tool call request: {tool_name}", {
+                    "tool_name": tool_name, 
+                    "params": params,
+                    "request_type": "tool_call"
+                })
+                
                 result = await self.mcp_manager.call_tool(tool_name, params)
                 
                 if result:
                     tool_results.append(f"Tool '{tool_name}' result: {result}")
+                    self._log_debug("MCP->AGENT", f"Tool call response: {tool_name}", {
+                        "tool_name": tool_name, 
+                        "result": result,
+                        "response_type": "tool_result",
+                        "success": True
+                    })
                 else:
                     tool_results.append(f"Tool '{tool_name}' failed to execute")
+                    self._log_debug("MCP->AGENT", f"Tool call response: {tool_name}", {
+                        "tool_name": tool_name, 
+                        "error": "Tool execution failed",
+                        "response_type": "tool_error",
+                        "success": False
+                    })
                     
             except Exception as e:
                 logger.error(f"Tool '{tool_name}' execution failed: {e}")
                 tool_results.append(f"Tool '{tool_name}' execution failed: {e}")
+                self._log_debug("AGENT->MCP", f"Tool call request exception: {tool_name}", {
+                    "tool_name": tool_name, 
+                    "error": str(e), 
+                    "exception_type": type(e).__name__,
+                    "request_type": "tool_call",
+                    "success": False
+                })
         
         # Append tool results to the response
         if tool_results:
@@ -245,9 +299,15 @@ class IntelligentAgent:
         Summarize the key information from the tool results and answer their question directly.
         """
         
+        self._log_debug("AGENT->LLM", "Final response generation request", {"prompt": prompt})
+        
         final_response = await self.llm_client.generate_response(prompt)
+        
         if not final_response:
+            self._log_debug("LLM->AGENT", "Final response generation failed", {"error": "No response generated"})
             return f"I executed the requested tools but couldn't generate a final response. Here are the tool results:\n\n{tool_results}"
+        
+        self._log_debug("LLM->AGENT", "Final response generated", {"response": final_response})
         
         return final_response
     

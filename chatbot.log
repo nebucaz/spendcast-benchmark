@@ -32975,3 +32975,358 @@ PARAMETERS: {}...
 2025-09-04 15:25:08,937 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  To find out the name of a person in a dataset, we typically use a data analysis tool like Python with libraries such as pandas or PySpark. However, since no tools are available for this task, let me ...
 2025-09-04 15:25:08,937 - src.intelligent_agent - INFO - Found 0 tool call matches: []
 2025-09-04 15:25:08,937 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 15:25:35,257 - src.intelligent_agent - INFO - Processing user request: What tools are availble?
+2025-09-04 15:25:35,258 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 15:25:36,342 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:25:36,343 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-04 15:25:36,343 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-04 15:25:39,552 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:25:39,555 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"query": "SELECT * WHERE { ?spendcast a spendcast:Transaction . }"}
+
+This command will return all transactions in the Spendcast GraphDB. If you want specific d...
+2025-09-04 15:25:39,555 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"query": "SELECT * WHERE { ?spendcast a spendcast:Transaction . }')]
+2025-09-04 15:25:39,556 - src.intelligent_agent - ERROR - No matching closing brace found in parameters
+2025-09-04 15:25:45,053 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:25:45,060 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 15:36:50,264 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 15:37:09,136 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 15:37:29,095 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 15:37:29,162 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 15:37:29,162 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 15:37:30,165 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 15:37:30,165 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 15:37:30,165 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 15:37:30,166 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 15:37:30,216 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 15:37:30,216 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 15:37:30,216 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 15:37:30,216 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 15:37:30,216 - src.web_server - INFO - Web server setup complete
+2025-09-04 15:38:33,069 - src.intelligent_agent - INFO - Processing user request: what transactions are available for "Jeanine Marie Blumenthal"
+2025-09-04 15:38:33,072 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 15:38:34,777 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:38:34,782 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-04 15:38:34,782 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-04 15:38:37,102 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:38:37,104 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"query": "SELECT * WHERE { <Jeanine_Marie_Blumenthal> <transaction> ?transaction .}"}...
+2025-09-04 15:38:37,104 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"query": "SELECT * WHERE { <Jeanine_Marie_Blumenthal> <transaction> ?transaction .}')]
+2025-09-04 15:38:37,104 - src.intelligent_agent - ERROR - No matching closing brace found in parameters
+2025-09-04 15:38:42,904 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:38:42,908 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 15:53:14,448 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 15:53:14,521 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 15:53:14,521 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 15:53:15,525 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 15:53:15,525 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 15:53:15,525 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 15:53:15,525 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 15:53:15,580 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 15:53:15,580 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 15:53:15,580 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 15:53:15,580 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 15:53:15,580 - src.web_server - INFO - Web server setup complete
+2025-09-04 15:53:50,635 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 15:53:50,698 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 15:53:50,698 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 15:53:51,702 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 15:53:51,702 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 15:53:51,702 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 15:53:51,702 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 15:53:51,743 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 15:53:51,743 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 15:53:51,743 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 15:53:51,743 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 15:53:51,743 - src.web_server - INFO - Web server setup complete
+2025-09-04 15:54:34,340 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-04 15:54:34,341 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 15:54:36,833 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:54:36,835 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-04 15:54:36,835 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-04 15:54:43,812 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:54:43,814 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  To gather financial transaction data for Jeanine Marie Blumenthal, we can utilize the spendcast_query tool. This will query the Spendcast GraphDB for the required information using SPARQL. Here's how...
+2025-09-04 15:54:43,815 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"subject": "Jeanine Marie Blumenthal", "predicate": ["http://purl.org/goodrelations/v1#paymentReceived", "http://purl.org/goodrelations/v1#paid"], "object": {"type": "bnode"}')]
+2025-09-04 15:54:43,815 - src.intelligent_agent - ERROR - No matching closing brace found in parameters
+2025-09-04 15:54:52,407 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:54:52,410 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 16:01:55,723 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:01:55,797 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:01:55,797 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:01:56,801 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 16:01:56,801 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 16:01:56,801 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 16:01:56,801 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 16:01:56,855 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:01:56,855 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:01:56,855 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:01:56,855 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:01:56,855 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:04:32,463 - src.intelligent_agent - INFO - Processing user request: What financial transactions have been recorded for the person "Jeanine Marie Blumenthal"?
+2025-09-04 16:04:32,464 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 16:04:34,205 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:04:34,206 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-04 16:04:34,206 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-04 16:04:42,031 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:04:42,033 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"subject": "Jeanine Marie Blumenthal", "predicate": "http://purl.org/goodrelations/v1#totalIncome", "objectProperty": "", "startDate": "2020-01-01T00:00:00Z", ...
+2025-09-04 16:04:42,034 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"subject": "Jeanine Marie Blumenthal", "predicate": "http://purl.org/goodrelations/v1#totalIncome", "objectProperty": "", "startDate": "2020-01-01T00:00:00Z", "endDate": "2023-12-31T23:59:59Z"}')]
+2025-09-04 16:04:42,034 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'subject': 'Jeanine Marie Blumenthal', 'predicate': 'http://purl.org/goodrelations/v1#totalIncome', 'objectProperty': '', 'startDate': '2020-01-01T00:00:00Z', 'endDate': '2023-12-31T23:59:59Z'}
+2025-09-04 16:04:46,578 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:04:46,579 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 16:07:16,603 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:07:16,678 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:07:16,678 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:07:16,678 - src.mcp_subprocess_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 16:07:16,685 - src.mcp_subprocess_client - ERROR - Failed to connect to MCP server: 'tuple' object has no attribute 'initialize'
+2025-09-04 16:07:16,685 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 16:07:16,685 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 16:07:16,686 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 16:07:16,737 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:07:16,737 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:07:16,737 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:07:16,737 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:07:16,738 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:07:17,202 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<<async_generator_athrow without __name__>()> exception=RuntimeError('Attempted to exit cancel scope in a different task than it was entered in')>
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 187, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 181, in stdio_client
+    anyio.create_task_group() as tg,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 778, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 457, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-09-04 16:07:17,204 - src.mcp_subprocess_manager - INFO - Stopping all MCP servers...
+2025-09-04 16:07:17,204 - src.mcp_subprocess_manager - INFO - All MCP servers stopped
+2025-09-04 16:07:41,544 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:07:41,611 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:07:41,611 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:07:41,611 - src.mcp_subprocess_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 16:07:41,618 - src.mcp_subprocess_client - ERROR - Failed to connect to MCP server: 'tuple' object has no attribute 'initialize'
+2025-09-04 16:07:41,618 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 16:07:41,618 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 16:07:41,618 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 16:07:41,664 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:07:41,664 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:07:41,664 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:07:41,664 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:07:41,664 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:07:42,115 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<<async_generator_athrow without __name__>()> exception=RuntimeError('Attempted to exit cancel scope in a different task than it was entered in')>
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 187, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 181, in stdio_client
+    anyio.create_task_group() as tg,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 778, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 457, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-09-04 16:07:42,118 - src.mcp_subprocess_manager - INFO - Stopping all MCP servers...
+2025-09-04 16:07:42,118 - src.mcp_subprocess_manager - INFO - All MCP servers stopped
+2025-09-04 16:13:40,433 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:13:40,503 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:13:40,503 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:13:40,503 - src.mcp_subprocess_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 16:14:25,821 - asyncio - ERROR - an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x106561d20>
+asyncgen: <async_generator object stdio_client at 0x106561d20>
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 187, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 181, in stdio_client
+    anyio.create_task_group() as tg,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 778, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 457, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-09-04 16:15:52,647 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:15:52,711 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:15:52,711 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:15:52,711 - src.mcp_subprocess_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 16:17:00,589 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:17:00,649 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:17:00,649 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:17:00,649 - src.mcp_subprocess_manager - INFO - Successfully started MCP server (mock mode): spendcast-graphdb
+2025-09-04 16:17:00,649 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 16:17:00,702 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:17:00,703 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:17:00,703 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:17:00,703 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:17:00,703 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:17:00,703 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:17:07,269 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:23:19,130 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:23:19,193 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:23:19,193 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:23:20,197 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 16:23:20,197 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 16:23:20,197 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 16:23:20,197 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 16:23:20,242 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:23:20,243 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:23:20,243 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:23:20,243 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:23:20,243 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:23:20,243 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:23:25,232 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:24:27,422 - src.intelligent_agent - INFO - Processing user request: What financial transactions have been recorded for the person "Jeanine Marie Blumenthal"?
+2025-09-04 16:24:27,422 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 16:24:27,422 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:24:27,422 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 16:24:27,422 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 16:24:27,423 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:24:32,907 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:24:32,909 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:24:32,909 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 16:24:51,950 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:28:30,349 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:28:30,420 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:28:30,420 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:28:31,424 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 16:28:31,424 - src.mcp_subprocess_client - ERROR - Failed to connect to subprocess: wrap_file() got an unexpected keyword argument 'mode'
+2025-09-04 16:28:31,424 - src.mcp_subprocess_manager - ERROR - Failed to connect to MCP subprocess: spendcast-graphdb
+2025-09-04 16:28:31,425 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 16:28:31,425 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 16:28:31,478 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:28:31,478 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:28:31,478 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:28:31,478 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:28:31,478 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:29:16,816 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:29:16,885 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:29:16,885 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:29:17,889 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 16:29:17,889 - src.mcp_subprocess_client - ERROR - Failed to connect to subprocess: '_io.TextIOWrapper' object has no attribute 'send'
+2025-09-04 16:29:17,889 - src.mcp_subprocess_manager - ERROR - Failed to connect to MCP subprocess: spendcast-graphdb
+2025-09-04 16:29:17,890 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 16:29:17,890 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-04 16:29:17,935 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:29:17,935 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:29:17,935 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:29:17,935 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:29:17,935 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:30:01,676 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:30:01,736 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:30:01,736 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:30:02,739 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 16:30:02,739 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 16:30:02,739 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 16:30:02,739 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 16:30:02,781 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:30:02,781 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:30:02,781 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:30:02,781 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:30:02,781 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:30:02,781 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:30:08,873 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-04 16:30:38,299 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:30:38,359 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:30:38,359 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:30:39,362 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 16:30:39,363 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 16:30:39,363 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 16:30:39,363 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 16:30:39,403 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:30:39,403 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:30:39,403 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:30:39,403 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:30:39,404 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:31:17,680 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-04 16:31:17,680 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 16:31:19,148 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:31:19,149 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-04 16:31:19,150 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-04 16:31:27,325 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:31:27,327 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"spendcastGraphDBQuery": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.co...
+2025-09-04 16:31:27,328 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"spendcastGraphDBQuery": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\\nPREFIX dcterms: <http://purl.org/dc/terms/>\\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\\nSELECT ?transaction WHERE {\\n  ?person a foaf:Person ;\\n        dcterms:identifier ?id .\\n  OPTIONAL {\\n    ?person rdf:type dbo:FinancialActor ;\\n           dbp:financialTransactions ?transaction .\\n  }')]
+2025-09-04 16:31:27,328 - src.intelligent_agent - ERROR - No matching closing brace found in parameters
+2025-09-04 16:31:34,440 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:31:34,442 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 16:38:12,720 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 16:38:12,795 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 16:38:12,795 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 16:38:13,799 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 16:38:13,800 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 16:38:13,800 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 16:38:13,800 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 16:38:13,858 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 16:38:13,858 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 16:38:13,858 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 16:38:13,859 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 16:38:13,859 - src.web_server - INFO - Web server setup complete
+2025-09-04 16:40:18,921 - src.intelligent_agent - INFO - Processing user request: What tools are available?
+2025-09-04 16:40:18,921 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 16:40:21,057 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:40:21,058 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-04 16:40:21,058 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-04 16:40:21,058 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-04 16:40:25,212 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:40:25,213 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"query": "SELECT * WHERE {?transaction ?property ?value.}"}
+
+This command will query the Spendcast GraphDB for all financial transactions and their associated ...
+2025-09-04 16:40:25,213 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"query": "SELECT * WHERE {?transaction ?property ?value.}')]
+2025-09-04 16:40:25,213 - src.intelligent_agent - ERROR - No matching closing brace found in parameters
+2025-09-04 16:40:30,180 - src.intelligent_agent - INFO - Processing user request: What tools are available?
+2025-09-04 16:40:30,180 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 16:40:33,232 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:40:33,233 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 16:40:33,233 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-04 16:40:33,234 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-04 16:40:34,255 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:40:34,256 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-04 16:40:34,256 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-04 16:40:38,797 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:40:38,798 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  To help you find available financial data from Spendcast GraphDB, I will use the `spendcast_query` tool. This tool allows us to query the database using SPARQL. Here's how we can do it:
+
+TOOL_CALL: s...
+2025-09-04 16:40:38,798 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"sparqlQuery": "SELECT * WHERE { ?transaction a spendcast:Transaction . ?transaction spendcast:hasAmount ?amount }')]
+2025-09-04 16:40:38,798 - src.intelligent_agent - ERROR - No matching closing brace found in parameters
+2025-09-04 16:40:46,054 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 16:40:46,054 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 16:40:46,054 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.

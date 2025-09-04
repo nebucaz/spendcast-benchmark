@@ -83,18 +83,20 @@ class MCPSubprocessManager:
             time.sleep(1)  # Check every second
     
     async def start_server(self, server_name: str, config: MCPServerConfig) -> bool:
-        """Start a single MCP server as a subprocess WITHOUT using stdio_client."""
+        """Start a single MCP server as a subprocess using the MCPServerProcess approach."""
         try:
             logger.info(f"Starting MCP server: {server_name}")
             
-            # Start the MCP server as a subprocess manually
+            # Start the MCP server as a subprocess using the approach from Story 1.6
             cmd = [config.command] + (config.args or [])
+            
             process = subprocess.Popen(
                 cmd,
                 stdin=subprocess.PIPE,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
+                bufsize=1,
                 cwd=config.cwd,
                 env=config.env
             )
@@ -112,7 +114,7 @@ class MCPSubprocessManager:
                     del self.processes[server_name]
                 return False
             
-            # Create MCP subprocess client and connect using direct stream communication
+            # Create MCP subprocess client and connect using the subprocess streams
             mcp_client = MCPSubprocessClient()
             success = await mcp_client.connect_to_subprocess(process, config)
             
