@@ -32326,3 +32326,312 @@
 2025-08-28 17:15:09,001 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2025-08-28 17:15:26,476 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2025-08-28 17:15:39,734 - src.conversation - INFO - Conversation ended
+2025-08-28 18:27:41,744 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-08-28 18:27:41,745 - src.mcp_client - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-08-28 18:27:41,745 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-08-28 18:27:42,750 - src.mcp_client - ERROR - Failed to connect to MCP server: object _AsyncGeneratorContextManager can't be used in 'await' expression
+2025-08-28 18:27:42,866 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-08-28 18:27:42,866 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-08-28 18:27:42,866 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-08-28 18:27:42,866 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-08-28 18:27:42,866 - src.mcp_client - WARNING - MCP client not connected
+2025-08-28 18:27:42,866 - src.llm_client - INFO - LLM client configured with 0 tools
+2025-08-28 18:27:42,866 - src.cli_interface - INFO - Configured LLM client with 0 tools
+2025-08-28 18:28:05,554 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-08-28 18:28:31,299 - src.conversation - INFO - Conversation ended
+2025-09-01 17:40:41,533 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-01 17:40:41,534 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-01 17:40:41,534 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-01 17:40:41,534 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-01 17:40:42,539 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: object _AsyncGeneratorContextManager can't be used in 'await' expression
+2025-09-01 17:40:42,540 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-01 17:40:42,541 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-01 17:40:42,541 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-01 17:40:42,630 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-01 17:40:42,630 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-01 17:40:42,630 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-01 17:40:42,630 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-01 17:40:42,630 - src.cli_interface - INFO - CLI interface setup complete
+2025-09-01 17:40:59,512 - src.intelligent_agent - INFO - Processing user request: hi, what tools do you have installed?
+2025-09-01 17:40:59,514 - src.intelligent_agent - ERROR - Error processing user request: 'MCPServerManager' object has no attribute 'get_available_resources'
+2025-09-01 17:40:59,514 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-01 17:40:59,516 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 27, in process_user_request
+    needed_resources = await self.determine_needed_resources(user_query)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 47, in determine_needed_resources
+    available_resources = self.mcp_manager.get_available_resources()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPServerManager' object has no attribute 'get_available_resources'. Did you mean: 'available_resources'?
+
+2025-09-01 17:41:25,129 - src.conversation - INFO - Conversation ended
+2025-09-01 17:41:25,132 - src.mcp_server_manager - INFO - Stopping all MCP servers...
+2025-09-01 17:41:25,133 - src.mcp_server_manager - INFO - All MCP servers stopped
+2025-09-04 12:11:59,796 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:11:59,796 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:11:59,796 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:11:59,796 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:12:00,801 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: object _AsyncGeneratorContextManager can't be used in 'await' expression
+2025-09-04 12:12:00,801 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 12:12:00,802 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 12:12:00,802 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 12:12:00,883 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 12:12:00,883 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 12:12:00,883 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 12:12:00,883 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 12:12:00,883 - src.cli_interface - INFO - CLI interface setup complete
+2025-09-04 12:12:19,501 - src.intelligent_agent - INFO - Processing user request: what tools are available?
+2025-09-04 12:12:19,501 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 12:12:19,501 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 12:12:19,501 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 12:12:28,337 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 12:12:28,338 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 12:13:34,446 - src.intelligent_agent - INFO - Processing user request: can you access a GraphDB triple store using an MCP Server?
+2025-09-04 12:13:34,446 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 12:13:34,447 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 12:13:34,447 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 12:14:03,917 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 12:14:03,917 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 12:15:07,807 - src.conversation - INFO - Conversation ended
+2025-09-04 12:15:07,810 - src.mcp_server_manager - INFO - Stopping all MCP servers...
+2025-09-04 12:15:07,810 - src.mcp_server_manager - INFO - All MCP servers stopped
+2025-09-04 12:15:28,550 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:15:28,550 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:15:28,550 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:15:28,550 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:15:29,562 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: 'tuple' object has no attribute 'initialize'
+2025-09-04 12:15:29,562 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 12:15:29,562 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 12:15:29,562 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 12:15:29,650 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 12:15:29,651 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 12:15:29,651 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 12:15:29,651 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 12:15:29,651 - src.cli_interface - INFO - CLI interface setup complete
+2025-09-04 12:16:33,257 - src.intelligent_agent - INFO - Processing user request: 
+2025-09-04 12:16:33,258 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 12:16:33,258 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 12:16:33,258 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 12:16:33,260 - src.mcp_server_manager - INFO - Stopping all MCP servers...
+2025-09-04 12:16:33,260 - src.mcp_server_manager - INFO - All MCP servers stopped
+2025-09-04 12:16:33,260 - mcp.os.posix.utilities - WARNING - Process group termination failed for PID 77612: [Errno 3] No such process, falling back to simple terminate
+2025-09-04 12:16:33,261 - asyncio - ERROR - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-5' coro=<<async_generator_athrow without __name__>()> exception=RuntimeError('Attempted to exit cancel scope in a different task than it was entered in')>
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 187, in stdio_client
+    yield read_stream, write_stream
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 776, in __aexit__
+    raise exc_val
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 182, in stdio_client
+    process,
+    ^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/abc/_resources.py", line 29, in __aexit__
+    await self.aclose()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1066, in aclose
+    await self._stdin.aclose()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1053, in aclose
+    await AsyncIOBackend.checkpoint()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2332, in checkpoint
+    await sleep(0)
+  File "/Users/neo/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 656, in sleep
+    await __sleep0()
+  File "/Users/neo/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 650, in __sleep0
+    yield
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 181, in stdio_client
+    anyio.create_task_group() as tg,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 778, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 457, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-09-04 12:16:46,728 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:16:46,728 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:16:46,728 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:16:46,728 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:16:47,742 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: 'tuple' object has no attribute 'initialize'
+2025-09-04 12:16:47,742 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 12:16:47,742 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 12:16:47,742 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 12:16:47,783 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 12:16:47,783 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 12:16:47,783 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 12:16:47,783 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 12:16:47,783 - src.cli_interface - INFO - CLI interface setup complete
+2025-09-04 12:16:54,010 - src.intelligent_agent - INFO - Processing user request: 
+2025-09-04 12:16:54,010 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 12:16:54,010 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 12:16:54,010 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 12:16:54,012 - src.mcp_server_manager - INFO - Stopping all MCP servers...
+2025-09-04 12:16:54,012 - src.mcp_server_manager - INFO - All MCP servers stopped
+2025-09-04 12:16:54,013 - mcp.os.posix.utilities - WARNING - Process group termination failed for PID 77708: [Errno 3] No such process, falling back to simple terminate
+2025-09-04 12:16:54,013 - asyncio - ERROR - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-5' coro=<<async_generator_athrow without __name__>()> exception=RuntimeError('Attempted to exit cancel scope in a different task than it was entered in')>
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 187, in stdio_client
+    yield read_stream, write_stream
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 776, in __aexit__
+    raise exc_val
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 182, in stdio_client
+    process,
+    ^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/abc/_resources.py", line 29, in __aexit__
+    await self.aclose()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1066, in aclose
+    await self._stdin.aclose()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1053, in aclose
+    await AsyncIOBackend.checkpoint()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2332, in checkpoint
+    await sleep(0)
+  File "/Users/neo/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 656, in sleep
+    await __sleep0()
+  File "/Users/neo/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 650, in __sleep0
+    yield
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 181, in stdio_client
+    anyio.create_task_group() as tg,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 778, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 457, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-09-04 12:18:47,567 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:18:47,567 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:18:47,567 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:18:47,567 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:18:47,574 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: 'tuple' object has no attribute 'initialize'
+2025-09-04 12:18:47,574 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 12:18:47,574 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 12:18:47,574 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 12:18:47,623 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 12:18:47,623 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 12:18:47,623 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 12:18:47,623 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 12:18:47,623 - src.cli_interface - INFO - CLI interface setup complete
+2025-09-04 12:24:30,496 - src.intelligent_agent - INFO - Processing user request: uv run python -m src.main
+2025-09-04 12:24:30,498 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 12:24:30,498 - src.intelligent_agent - INFO - No tools available, skipping tool determination
+2025-09-04 12:24:30,498 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 12:24:30,499 - src.mcp_server_manager - INFO - Stopping all MCP servers...
+2025-09-04 12:24:30,499 - src.mcp_server_manager - INFO - All MCP servers stopped
+2025-09-04 12:24:30,499 - mcp.os.posix.utilities - WARNING - Process group termination failed for PID 77802: [Errno 3] No such process, falling back to simple terminate
+2025-09-04 12:24:30,500 - asyncio - ERROR - unhandled exception during asyncio.run() shutdown
+task: <Task finished name='Task-5' coro=<<async_generator_athrow without __name__>()> exception=RuntimeError('Attempted to exit cancel scope in a different task than it was entered in')>
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 187, in stdio_client
+    yield read_stream, write_stream
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 776, in __aexit__
+    raise exc_val
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 182, in stdio_client
+    process,
+    ^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/abc/_resources.py", line 29, in __aexit__
+    await self.aclose()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1066, in aclose
+    await self._stdin.aclose()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1053, in aclose
+    await AsyncIOBackend.checkpoint()
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2332, in checkpoint
+    await sleep(0)
+  File "/Users/neo/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 656, in sleep
+    await __sleep0()
+  File "/Users/neo/.local/share/uv/python/cpython-3.12.11-macos-aarch64-none/lib/python3.12/asyncio/tasks.py", line 650, in __sleep0
+    yield
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 181, in stdio_client
+    anyio.create_task_group() as tg,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 778, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 457, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-09-04 12:26:35,939 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:26:35,939 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:26:35,939 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:26:35,939 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:26:44,600 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-04 12:26:44,600 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 12:26:44,600 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 12:26:44,600 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 12:26:44,643 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 12:26:44,643 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 12:26:44,643 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 12:26:44,643 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 12:26:44,643 - src.cli_interface - INFO - CLI interface setup complete
+2025-09-04 12:26:57,225 - src.conversation - INFO - Conversation ended
+2025-09-04 12:26:57,228 - src.mcp_server_manager - INFO - Stopping all MCP servers...
+2025-09-04 12:26:57,228 - src.mcp_server_manager - INFO - All MCP servers stopped
+2025-09-04 12:27:05,783 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:27:05,784 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:27:05,784 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:27:05,784 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:40:31,955 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-04 12:40:31,956 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 12:40:31,956 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 12:40:31,956 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 12:40:32,001 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 12:40:32,002 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 12:40:32,002 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 12:40:32,002 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 12:40:32,002 - src.cli_interface - INFO - CLI interface setup complete
+2025-09-04 12:50:00,963 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:50:06,229 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:50:06,229 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:50:18,628 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:50:18,746 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:50:18,746 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:50:18,746 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:52:33,638 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 12:52:33,639 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 12:52:33,639 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 12:52:33,639 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 12:52:38,610 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-04 12:52:38,610 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 12:52:38,610 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 12:52:38,610 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 13:14:41,200 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 13:14:41,265 - src.mcp_server_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 13:14:41,265 - src.mcp_server_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 13:14:41,265 - src.mcp_client - INFO - Connecting to MCP server: spendcast-graphdb
+2025-09-04 13:14:59,956 - src.mcp_client - ERROR - Failed to connect to MCP server spendcast-graphdb: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-04 13:14:59,956 - src.mcp_server_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-04 13:14:59,956 - src.mcp_server_manager - INFO - Discovering capabilities from all MCP servers...
+2025-09-04 13:14:59,956 - src.mcp_server_manager - INFO - Total capabilities discovered: 0 tools
+2025-09-04 13:15:00,008 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 13:15:00,009 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 13:15:00,009 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 13:15:00,009 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 13:15:00,009 - src.web_server - INFO - Web server setup complete

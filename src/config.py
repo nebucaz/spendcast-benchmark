@@ -17,11 +17,6 @@ class Settings(BaseSettings):
     ollama_host: str = Field(default="http://localhost:11434")
     ollama_model: str = Field(default="mistral")
     
-    # GraphDB Configuration (for Story 1.2)
-    graphdb_url: str = Field(default="http://localhost:7200/repositories/demo")
-    graphdb_user: str = Field(default="bernhaeckt")
-    graphdb_password: str = Field(default="bernhaeckt")
-    
     # Logging Configuration
     log_level: str = Field(default="INFO")
     

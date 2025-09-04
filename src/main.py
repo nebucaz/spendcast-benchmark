@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """Main entry point for the Spendcast Benchmark chatbot."""
 
-import asyncio
 import logging
 import sys
 from pathlib import Path
 
-from .cli_interface import CLIInterface
+from .simple_cli import SimpleCLI
 from .config import get_settings
 
 # Configure logging
@@ -23,7 +22,7 @@ def setup_logging():
         ]
     )
 
-async def main():
+def main():
     """Main application entry point."""
     # Set up logging
     setup_logging()
@@ -32,16 +31,9 @@ async def main():
     try:
         logger.info("Starting Spendcast Benchmark chatbot...")
         
-        # Create and run CLI interface
-        async with CLIInterface() as cli:
-            # Display welcome message
-            cli.display_welcome()
-            
-            # Display help
-            cli.display_help()
-            
-            # Run the conversation loop
-            await cli.run_conversation_loop()
+        # Create and run simple CLI
+        cli = SimpleCLI()
+        cli.run()
             
     except KeyboardInterrupt:
         logger.info("Application interrupted by user")
@@ -54,15 +46,5 @@ async def main():
         print(f"\n❌ An error occurred: {e}")
         sys.exit(1)
 
-def run():
-    """Entry point for the application."""
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        print("\nGoodbye! 👋")
-    except Exception as e:
-        print(f"\n❌ Failed to start application: {e}")
-        sys.exit(1)
-
 if __name__ == "__main__":
-    run()
+    main()

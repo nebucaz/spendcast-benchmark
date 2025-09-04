@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "spendcast-graphdb": {
+      "command": "/opt/homebrew/bin/uv",
+      "args": [
+        "--directory",
+        "/Users/neo/Data/workspace/spendcast-mcp",
+        "run",
+        "src/spendcast_mcp/server.py"],
+      "env": {
+        "GRAPHDB_URL": "http://localhost:7200/repositories/demo",
+        "GRAPHDB_USER": "bernhaeckt",
+        "GRAPHDB_PASSWORD": "bernhaeckt"
+      }
+    }
+  }
+}

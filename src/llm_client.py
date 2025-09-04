@@ -124,12 +124,11 @@ class OllamaClient:
 
 
 class LLMClient:
-    """High-level LLM client that integrates with MCP tools."""
+    """High-level LLM client for generating responses."""
     
     def __init__(self):
         """Initialize the LLM client."""
         self.ollama = OllamaClient()
-        self.available_tools: List[str] = []
         
     async def setup(self):
         """Set up the LLM client and check model availability."""
@@ -157,21 +156,6 @@ class LLMClient:
         if response:
             return response.response
         return None
-    
-    def set_available_tools(self, tools: List[str]):
-        """Set the list of available MCP tools."""
-        self.available_tools = tools
-    
-    def get_system_prompt(self) -> str:
-        """Get the system prompt for the LLM."""
-        base_prompt = """You are a helpful AI assistant integrated with financial data tools. 
-You can help users with financial queries and data analysis.
-
-Available tools: {tools}
-
-Please provide helpful, accurate responses and use the available tools when appropriate."""
-        
-        return base_prompt.format(tools=", ".join(self.available_tools) if self.available_tools else "None")
     
     async def close(self):
         """Close the LLM client."""
