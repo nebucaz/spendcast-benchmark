@@ -32930,3 +32930,48 @@ TypeError: 'coroutine' object is not iterable
 2025-09-04 14:50:23,858 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2025-09-04 14:50:23,859 - src.intelligent_agent - INFO - Executing tool call: spendcast_get_schema with params: {}
 2025-09-04 14:50:23,859 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 15:21:19,777 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 15:21:19,861 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 15:21:19,861 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 15:21:20,865 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 15:21:20,865 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 15:21:20,865 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 15:21:20,865 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 15:21:20,921 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 15:21:20,921 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 15:21:20,921 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 15:21:20,921 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 15:21:20,921 - src.web_server - INFO - Web server setup complete
+2025-09-04 15:22:18,797 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-04 15:22:18,858 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-04 15:22:18,858 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-04 15:22:19,861 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-04 15:22:19,862 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-04 15:22:19,862 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-04 15:22:19,862 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-04 15:22:19,902 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-04 15:22:19,902 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-04 15:22:19,902 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-04 15:22:19,902 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-04 15:22:19,902 - src.web_server - INFO - Web server setup complete
+2025-09-04 15:24:12,906 - src.intelligent_agent - INFO - Processing user request: can you tell me, what persons are stored in the spendcast dataset?
+2025-09-04 15:24:12,907 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 15:24:16,168 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:24:16,170 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_get_schema']
+2025-09-04 15:24:16,171 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-04 15:24:17,641 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:24:17,643 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_get_schema
+PARAMETERS: {}...
+2025-09-04 15:24:17,644 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_get_schema', '{}')]
+2025-09-04 15:24:17,644 - src.intelligent_agent - INFO - Executing tool call: spendcast_get_schema with params: {}
+2025-09-04 15:24:24,723 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:24:24,726 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-04 15:25:01,581 - src.intelligent_agent - INFO - Processing user request: What's the name of the person in the dataset?
+2025-09-04 15:25:01,583 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-04 15:25:02,318 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:25:02,319 - src.intelligent_agent - INFO - Determined needed tools: []
+2025-09-04 15:25:02,319 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-04 15:25:08,936 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-04 15:25:08,937 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  To find out the name of a person in a dataset, we typically use a data analysis tool like Python with libraries such as pandas or PySpark. However, since no tools are available for this task, let me ...
+2025-09-04 15:25:08,937 - src.intelligent_agent - INFO - Found 0 tool call matches: []
+2025-09-04 15:25:08,937 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully

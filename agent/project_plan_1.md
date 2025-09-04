@@ -160,7 +160,47 @@ proc = subprocess.Popen(
     - Web server starts and accepts a prompt.
     - Agent routes a request through one of the MCP servers and returns the result.
 
-## Story 1.7 Abstraction Layer for Multi-Machine LLM Setup
+## Story 1.7 LLM-Instruction Parsing and Tool Execution
+Status: ✅ Completed
+
+### Acceptance criteria
+- The agent must parse the LLM output for tool calls (TOOL_CALL) and their parameters.
+- The agent must validate extracted parameters (e.g., valid JSON, required fields).
+- The agent should optionally present proposed tool calls to the user for approval.
+- Only after parsing (and optional approval) should the agent invoke the MCP client.
+- The results from MCP servers must be returned to the LLM as context for further reasoning.
+- Parsing errors must be reported clearly to the LLM for regeneration or correction.
+
+### Technical Implementation
+- Implement a parser in the agent to detect TOOL_CALL blocks in LLM output.
+- Use json.loads or a safe JSON parser for parameters, with error handling.
+- Wrap MCP client calls in a function that optionally asks the user for confirmation.
+- Feed MCP results back to LLM for reasoning or response generation.
+- Maintain logs of tool calls, results, and user approvals for auditing.
+
+### Testing
+1. Unit tests
+  - Validate parser extracts tool name + parameters correctly from sample LLM outputs.
+  - Check parsing error handling for malformed JSON or missing fields.
+
+2. Integration tests
+  - Run the agent → LLM → MCP server → verify that tool calls are executed correctly.
+  - Include tests with simulated user approvals/rejections.
+
+3. End-to-end tests
+  - Submit a query to the agent.
+  - Verify: LLM suggests a tool call, agent parses it, optionally asks for user approval, executes MCP call, and returns results to LLM.
+
+### Implementation Notes
+- Enhanced the `IntelligentAgent` with robust tool call parsing using regex patterns
+- Added `_parse_tool_parameters()` method with proper JSON boundary detection
+- Implemented `_generate_final_response()` to feed tool results back to LLM
+- Added comprehensive error handling and logging for tool execution
+- Improved prompts to guide LLM in proper tool call formatting
+- Tool calls are now properly parsed and executed without JSON parsing errors
+
+
+## Story 1.8 Abstraction Layer for Multi-Machine LLM Setup
 Status: ⏳ Pending
 
 ### Acceptance criteria

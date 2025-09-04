@@ -118,9 +118,15 @@ class IntelligentAgent:
         
         What should I do to fulfill this request? Use the available tools if needed.
         
-        If you need to call a tool, format your response like this:
+        IMPORTANT: If you need to call a tool, format your response EXACTLY like this:
         TOOL_CALL: tool_name
         PARAMETERS: {{"param1": "value1", "param2": "value2"}}
+        
+        Rules:
+        1. Use the exact tool names from the available tools list
+        2. Provide valid JSON parameters (no extra text after the closing brace)
+        3. If no tools are needed, just provide a helpful response
+        4. Only call one tool at a time
         
         Provide a helpful response that addresses the user's request.
         """
@@ -132,17 +138,26 @@ class IntelligentAgent:
         # Process any tool calls in the response
         processed_response = await self._process_tool_calls(response)
         
+        # If tool calls were executed, feed results back to LLM for final response
+        if "Tool '" in processed_response and processed_response != response:
+            final_response = await self._generate_final_response(user_query, processed_response)
+            return final_response
+        
         return processed_response
     
     async def _process_tool_calls(self, response: str) -> str:
-        """Process tool calls in the LLM response."""
+        """Process tool calls in the LLM response with enhanced parsing."""
         available_tools = await self.mcp_manager.get_available_tools()
         if not available_tools:
             return response
         
+        logger.info(f"Processing LLM response for tool calls: {response[:200]}...")
+        
         # Look for tool call patterns in the response
-        tool_call_pattern = r'TOOL_CALL:\s*(\w+)\s*\nPARAMETERS:\s*(\{.*\})'
+        tool_call_pattern = r'TOOL_CALL:\s*(\w+)\s*\nPARAMETERS:\s*(\{.*?\})'
         matches = re.findall(tool_call_pattern, response, re.MULTILINE | re.DOTALL)
+        
+        logger.info(f"Found {len(matches)} tool call matches: {matches}")
         
         if not matches:
             return response
@@ -151,9 +166,13 @@ class IntelligentAgent:
         tool_results = []
         for tool_name, params_str in matches:
             try:
-                # Parse parameters
+                # Parse parameters with better error handling
                 import json
-                params = json.loads(params_str)
+                params = self._parse_tool_parameters(params_str)
+                
+                if params is None:
+                    tool_results.append(f"Tool '{tool_name}' parameters could not be parsed")
+                    continue
                 
                 # Call the tool
                 logger.info(f"Executing tool call: {tool_name} with params: {params}")
@@ -164,9 +183,6 @@ class IntelligentAgent:
                 else:
                     tool_results.append(f"Tool '{tool_name}' failed to execute")
                     
-            except json.JSONDecodeError as e:
-                logger.error(f"Failed to parse tool parameters: {e}")
-                tool_results.append(f"Tool '{tool_name}' parameters invalid: {e}")
             except Exception as e:
                 logger.error(f"Tool '{tool_name}' execution failed: {e}")
                 tool_results.append(f"Tool '{tool_name}' execution failed: {e}")
@@ -176,6 +192,64 @@ class IntelligentAgent:
             response += "\n\n" + "\n".join(tool_results)
         
         return response
+    
+    def _parse_tool_parameters(self, params_str: str) -> Optional[Dict[str, Any]]:
+        """Parse tool parameters with enhanced error handling."""
+        import json
+        
+        # Clean up the parameters string
+        params_str = params_str.strip()
+        
+        # Try to find the JSON object boundaries
+        start_idx = params_str.find('{')
+        if start_idx == -1:
+            logger.error("No JSON object found in parameters")
+            return None
+        
+        # Find the matching closing brace
+        brace_count = 0
+        end_idx = -1
+        for i, char in enumerate(params_str[start_idx:], start_idx):
+            if char == '{':
+                brace_count += 1
+            elif char == '}':
+                brace_count -= 1
+                if brace_count == 0:
+                    end_idx = i
+                    break
+        
+        if end_idx == -1:
+            logger.error("No matching closing brace found in parameters")
+            return None
+        
+        # Extract the JSON part
+        json_str = params_str[start_idx:end_idx + 1]
+        
+        try:
+            params = json.loads(json_str)
+            return params
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse tool parameters: {e}")
+            logger.error(f"JSON string: {json_str}")
+            return None
+    
+    async def _generate_final_response(self, user_query: str, tool_results: str) -> str:
+        """Generate final response using tool results."""
+        prompt = f"""
+        User request: {user_query}
+        
+        Tool execution results:
+        {tool_results}
+        
+        Based on the tool results above, provide a helpful and complete response to the user's request.
+        Summarize the key information from the tool results and answer their question directly.
+        """
+        
+        final_response = await self.llm_client.generate_response(prompt)
+        if not final_response:
+            return f"I executed the requested tools but couldn't generate a final response. Here are the tool results:\n\n{tool_results}"
+        
+        return final_response
     
     def _format_available_resources(self, resources: List[Any]) -> str:
         """Format available resources for the prompt."""
