@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from .mcp_subprocess_manager import MCPSubprocessManager
+from .mcp_on_demand_manager import MCPOnDemandManager
 from .llm_client import LLMClient
 from .intelligent_agent import IntelligentAgent
 from .conversation import Conversation
@@ -23,7 +23,7 @@ class WebServer:
     def __init__(self):
         """Initialize the web server."""
         self.app = FastAPI(title="Spendcast Benchmark Chatbot", version="1.0.0")
-        self.mcp_manager: Optional[MCPSubprocessManager] = None
+        self.mcp_manager: Optional[MCPOnDemandManager] = None
         self.llm_client: Optional[LLMClient] = None
         self.intelligent_agent: Optional[IntelligentAgent] = None
         self.active_connections: List[WebSocket] = []
@@ -118,7 +118,7 @@ class WebServer:
             tools = await self.mcp_manager.get_available_tools()
             return {
                 "status": "running",
-                "mcp_servers": len(self.mcp_manager.processes),
+                "mcp_servers": len(self.mcp_manager.configs),
                 "tools_available": len(tools),
                 "llm_ready": self.llm_client is not None
             }
@@ -151,9 +151,9 @@ class WebServer:
             available_tools = await self.mcp_manager.get_available_tools()
             for tool in available_tools:
                 tools.append({
-                    "name": tool.name,
-                    "description": tool.description,
-                    "server": getattr(tool, 'server_name', 'unknown')
+                    "name": tool["name"],
+                    "description": tool["description"],
+                    "server": tool.get("server", "unknown")
                 })
             
             return {"tools": tools}
@@ -632,9 +632,10 @@ class WebServer:
     async def setup(self):
         """Setup the web server components."""
         try:
-            # Initialize MCP subprocess manager
-            self.mcp_manager = MCPSubprocessManager()
-            await self.mcp_manager.start_all_servers()
+            # Initialize MCP on-demand manager
+            from .mcp_client import load_mcp_configs
+            configs = load_mcp_configs()
+            self.mcp_manager = MCPOnDemandManager(configs)
             
             # Initialize LLM client
             self.llm_client = LLMClient()
@@ -645,7 +646,7 @@ class WebServer:
             
             # Add initial debug log to test the system
             self.add_debug_log("SYSTEM", "Web server initialized successfully", {
-                "mcp_servers": len(self.mcp_manager.mcp_clients),
+                "mcp_servers": len(self.mcp_manager.configs),
                 "tools_available": len(await self.mcp_manager.get_available_tools())
             })
             
@@ -661,7 +662,7 @@ class WebServer:
         if self.llm_client:
             await self.llm_client.close()
         if self.mcp_manager:
-            await self.mcp_manager.stop_all_servers()
+            await self.mcp_manager.shutdown()
 
 
 async def start_web_server(host: str = "localhost", port: int = 8000):

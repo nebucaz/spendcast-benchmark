@@ -62,15 +62,35 @@ class MCPSubprocessClient:
             
             logger.info(f"Connecting to MCP subprocess: {server_config.name}")
             
-            # Check if the process is still running
-            if server_process.poll() is not None:
+            # If we have a server_process, check if it's still running
+            if server_process is not None and server_process.poll() is not None:
                 logger.error(f"Subprocess has already terminated: {server_config.name}")
                 return False
             
-            # For now, use mock communication to avoid blocking issues
-            # The real MCP server is running in the background, but we use mock communication
-            # This follows the approach from Story 1.6 where the subprocess is managed separately
-            self.session = "connected"
+            # Use the MCP stdio client to connect to the subprocess
+            from mcp.client.stdio import stdio_client
+            from mcp import StdioServerParameters
+            
+            # Create stdio server parameters
+            server_params = StdioServerParameters(
+                command=server_config.command,
+                args=server_config.args or [],
+                env=server_config.env or {}
+            )
+            
+            # Create stdio client context manager
+            self._stdio_context = stdio_client(server_params)
+            
+            # Get the streams from the stdio client
+            streams = await self._stdio_context.__aenter__()
+            read_stream, write_stream = streams
+            
+            # Create a ClientSession with the streams
+            from mcp import ClientSession
+            self.session = ClientSession(read_stream, write_stream)
+            
+            # Initialize the session
+            await self.session.initialize()
             
             logger.info(f"Connected to subprocess: {server_config.name}")
             return True
@@ -81,11 +101,14 @@ class MCPSubprocessClient:
     
     async def disconnect(self):
         """Disconnect from the MCP server."""
-        if self.session:
+        if self.session and self.session != "connected":
             try:
                 await self.session.aclose()
             except Exception as e:
                 logger.warning(f"Error closing MCP session: {e}")
+            self.session = None
+        elif self.session == "connected":
+            # Mock session, just clear it
             self.session = None
         
         if self._stdio_context:
@@ -99,64 +122,35 @@ class MCPSubprocessClient:
     
     async def list_tools(self) -> List[Tool]:
         """List available tools from the MCP server."""
-        if not self.session:
+        if not self.session or self.session == "connected":
             logger.warning("MCP client not properly connected")
             return []
         
         try:
-            # Return mock tools that match the real MCP server capabilities
-            from mcp.types import Tool
-            
-            mock_tools = [
-                Tool(
-                    name="spendcast_query",
-                    description="Query the Spendcast GraphDB for financial data using SPARQL",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {
-                            "query": {
-                                "type": "string",
-                                "description": "SPARQL query to execute"
-                            }
-                        },
-                        "required": ["query"]
-                    }
-                ),
-                Tool(
-                    name="spendcast_get_schema",
-                    description="Get schema information for the Spendcast GraphDB",
-                    inputSchema={
-                        "type": "object",
-                        "properties": {},
-                        "required": []
-                    }
-                )
-            ]
-            
-            return mock_tools
+            # Use real MCP session to list tools
+            tools = await self.session.list_tools()
+            return tools
         except Exception as e:
             logger.error(f"Failed to list tools: {e}")
             return []
     
     async def call_tool(self, tool_name: str, arguments: Dict[str, Any]) -> Optional[str]:
         """Call a tool by name."""
-        if not self.session:
+        if not self.session or self.session == "connected":
             logger.warning("MCP client not properly connected")
             return None
         
         try:
-            # Mock tool responses for testing
-            if tool_name == "spendcast_query":
-                query = arguments.get("query", "")
-                return f"Mock SPARQL query result for: {query}\n\nThis would normally execute a SPARQL query against the Spendcast GraphDB."
-            elif tool_name == "spendcast_get_schema":
-                return "Mock schema information:\n\nThis is a financial data schema with:\n- Accounts (checking, savings, credit cards)\n- Transactions (with amounts, dates, status)\n- Parties (customers, merchants, banks)\n- Products and receipts\n- Payment cards and relationships"
-            else:
-                return f"Mock response for {tool_name} with args {arguments}"
+            # Use real MCP session to call tools
+            result = await self.session.call_tool(tool_name, arguments)
+            return result
         except Exception as e:
             logger.error(f"Failed to call tool {tool_name}: {e}")
             return None
     
     def is_connected(self) -> bool:
         """Check if the client is connected."""
-        return self.session is not None and self.server_process is not None and self.server_process.poll() is None
+        return (self.session is not None and 
+                self.session != "connected" and 
+                self.server_process is not None and 
+                self.server_process.poll() is None)

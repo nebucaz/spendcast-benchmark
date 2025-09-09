@@ -125,7 +125,14 @@ class IntelligentAgent:
         available_tools = await self.mcp_manager.get_available_tools()
         
         # Filter tools to only those that are needed
-        relevant_tools = [tool for tool in available_tools if tool.name in needed_tools]
+        relevant_tools = []
+        for tool in available_tools:
+            if isinstance(tool, dict):
+                tool_name = tool.get("name", "")
+            else:
+                tool_name = tool.name
+            if tool_name in needed_tools:
+                relevant_tools.append(tool)
         
         prompt = f"""
         User request: {user_query}
@@ -248,7 +255,7 @@ class IntelligentAgent:
         return response
     
     def _parse_tool_parameters(self, params_str: str) -> Optional[Dict[str, Any]]:
-        """Parse tool parameters with enhanced error handling."""
+        """Parse tool parameters with enhanced error handling and recovery."""
         import json
         
         # Clean up the parameters string
@@ -273,7 +280,40 @@ class IntelligentAgent:
                     break
         
         if end_idx == -1:
-            logger.error("No matching closing brace found in parameters")
+            logger.warning("No matching closing brace found in parameters, attempting to fix JSON")
+            # Try to fix incomplete JSON by adding missing closing characters
+            # Look for the last quote and add missing closing characters
+            last_quote_idx = params_str.rfind('"')
+            if last_quote_idx > start_idx:
+                # Add missing closing quote and brace
+                fixed_json = params_str[start_idx:last_quote_idx + 1] + '"}'
+                logger.info(f"Attempting to fix JSON: {fixed_json}")
+                try:
+                    params = json.loads(fixed_json)
+                    return params
+                except json.JSONDecodeError:
+                    pass
+            
+            # If that didn't work, try a more aggressive fix
+            # Extract the key-value pair and reconstruct
+            content = params_str[start_idx + 1:]  # Remove opening brace
+            if ':' in content:
+                key_end = content.find(':')
+                key = content[:key_end].strip().strip('"')
+                value_start = content.find('"', key_end)
+                if value_start != -1:
+                    value = content[value_start + 1:]  # Remove opening quote
+                    # Remove any trailing characters and add closing quote and brace
+                    value = value.strip().rstrip('"').rstrip('}')
+                    fixed_json = f'{{"{key}": "{value}"}}'
+                    logger.info(f"Attempting aggressive JSON fix: {fixed_json}")
+                    try:
+                        params = json.loads(fixed_json)
+                        return params
+                    except json.JSONDecodeError:
+                        pass
+            
+            logger.error("Could not fix incomplete JSON parameters")
             return None
         
         # Extract the JSON part
@@ -331,9 +371,15 @@ class IntelligentAgent:
         
         formatted = []
         for tool in tools:
-            name = tool.name
-            description = tool.description
-            server_name = getattr(tool, 'server_name', 'unknown')
+            # Handle both dict and object formats
+            if isinstance(tool, dict):
+                name = tool.get("name", "unknown")
+                description = tool.get("description", "No description")
+                server_name = tool.get("server", "unknown")
+            else:
+                name = tool.name
+                description = tool.description
+                server_name = getattr(tool, 'server_name', 'unknown')
             formatted.append(f"- {name} ({server_name}): {description}")
         
         return "\n".join(formatted)

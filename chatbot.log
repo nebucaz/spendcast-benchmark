@@ -33330,3 +33330,567 @@ TOOL_CALL: s...
 2025-09-04 16:40:46,054 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2025-09-04 16:40:46,054 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
 2025-09-04 16:40:46,054 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-05 08:53:00,871 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-05 08:53:00,872 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-05 08:53:04,326 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:53:04,329 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-05 08:53:04,329 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-05 08:53:07,740 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:53:07,742 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"sparqlQuery": "PREFIX spdx: <http://spendcast-graphdb.org/spdx#>. SELECT ?transaction WHERE {?transaction spdx:hasSubject <https://example.com/person/JeanineM...
+2025-09-05 08:53:07,743 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"sparqlQuery": "PREFIX spdx: <http://spendcast-graphdb.org/spdx#>. SELECT ?transaction WHERE {?transaction spdx:hasSubject <https://example.com/person/JeanineMarieBlumenthal>}')]
+2025-09-05 08:53:07,743 - src.intelligent_agent - ERROR - No matching closing brace found in parameters
+2025-09-05 08:53:12,877 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:53:12,878 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-05 08:55:43,386 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-05 08:55:43,465 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-05 08:55:43,465 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-05 08:55:44,476 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-05 08:55:44,476 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-05 08:55:44,476 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-05 08:55:44,476 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-05 08:55:44,532 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-05 08:55:44,532 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-05 08:55:44,532 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-05 08:55:44,532 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-05 08:55:44,532 - src.web_server - INFO - Web server setup complete
+2025-09-05 08:56:03,416 - src.intelligent_agent - INFO - Processing user request: Tell me about financial transactions for Jeanine Marie Blumenthal
+2025-09-05 08:56:03,416 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-05 08:56:04,353 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:56:04,353 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-05 08:56:04,353 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-05 08:56:08,016 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:56:08,017 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"sparqlQuery": "PREFIX fd: <http://purl.org/dc/terms/>\nSELECT ?transaction WHERE {?transaction a fd:FinancialTransaction.\n?transaction fd:subject 'Jeanine Ma...
+2025-09-05 08:56:08,017 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"sparqlQuery": "PREFIX fd: <http://purl.org/dc/terms/>\\nSELECT ?transaction WHERE {?transaction a fd:FinancialTransaction.\\n?transaction fd:subject \'Jeanine Marie Blumenthal\' .}')]
+2025-09-05 08:56:08,017 - src.intelligent_agent - WARNING - No matching closing brace found in parameters, attempting to fix JSON
+2025-09-05 08:56:08,017 - src.intelligent_agent - INFO - Attempting to fix JSON: {"sparqlQuery": ""}
+2025-09-05 08:56:08,017 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'sparqlQuery': ''}
+2025-09-05 08:56:08,017 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-05 08:56:13,485 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:56:13,486 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-05 08:56:13,486 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-05 08:56:40,326 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-05 08:56:40,326 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-05 08:56:41,170 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:56:41,171 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-05 08:56:41,171 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-05 08:56:45,301 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:56:45,303 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"subject": "Jeanine Marie Blumenthal", "predicate": "financialTransaction", "object": "", "limit": 10}
+
+This command will fetch up to 10 financial transactions...
+2025-09-05 08:56:45,303 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"subject": "Jeanine Marie Blumenthal", "predicate": "financialTransaction", "object": "", "limit": 10}')]
+2025-09-05 08:56:45,303 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'subject': 'Jeanine Marie Blumenthal', 'predicate': 'financialTransaction', 'object': '', 'limit': 10}
+2025-09-05 08:57:03,903 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-05 08:57:03,903 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-05 09:07:52,830 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-05 09:07:52,909 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-05 09:07:52,909 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-05 09:07:52,909 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-05 09:07:52,909 - src.mcp_subprocess_client - ERROR - Failed to connect to subprocess: 'NoneType' object has no attribute 'poll'
+2025-09-05 09:07:52,909 - src.mcp_subprocess_manager - ERROR - Failed to connect to MCP server: spendcast-graphdb
+2025-09-05 09:07:52,909 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-05 09:07:52,909 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-05 09:07:52,961 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-05 09:07:52,961 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-05 09:07:52,961 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-05 09:07:52,961 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-05 09:07:52,961 - src.web_server - INFO - Web server setup complete
+2025-09-05 09:08:36,949 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-05 09:08:37,012 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-05 09:08:37,012 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-05 09:08:37,012 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-05 09:22:39,019 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-05 09:22:39,086 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-05 09:22:39,086 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-05 09:22:40,091 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-05 09:22:40,092 - src.mcp_subprocess_client - ERROR - Failed to connect to subprocess: '_io.TextIOWrapper' object has no attribute 'send'
+2025-09-05 09:22:40,092 - src.mcp_subprocess_manager - ERROR - Failed to connect to MCP subprocess: spendcast-graphdb
+2025-09-05 09:22:40,092 - src.mcp_subprocess_manager - ERROR - Failed to start MCP server: spendcast-graphdb
+2025-09-05 09:22:40,092 - src.mcp_subprocess_manager - INFO - Started 0/1 MCP servers
+2025-09-05 09:22:40,148 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-05 09:22:40,149 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-05 09:22:40,149 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-05 09:22:40,149 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-05 09:22:40,149 - src.web_server - INFO - Web server setup complete
+2025-09-05 09:26:42,614 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-05 09:26:42,681 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-05 09:26:42,681 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-05 09:26:42,681 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-05 09:28:32,658 - asyncio - ERROR - an error occurred during closing of asynchronous generator <async_generator object stdio_client at 0x106569d20>
+asyncgen: <async_generator object stdio_client at 0x106569d20>
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 772, in __aexit__
+  |     raise BaseExceptionGroup(
+  | BaseExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 187, in stdio_client
+    |     yield read_stream, write_stream
+    | GeneratorExit
+    +------------------------------------
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/mcp/client/stdio/__init__.py", line 181, in stdio_client
+    anyio.create_task_group() as tg,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 778, in __aexit__
+    if self.cancel_scope.__exit__(type(exc), exc, exc.__traceback__):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 457, in __exit__
+    raise RuntimeError(
+RuntimeError: Attempted to exit cancel scope in a different task than it was entered in
+2025-09-05 09:33:17,105 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-05 09:33:17,173 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-05 09:33:17,173 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-05 09:33:18,177 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-05 09:33:18,177 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-05 09:33:18,177 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-05 09:33:18,177 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-05 09:33:18,240 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-05 09:33:18,240 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-05 09:33:18,240 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-05 09:33:18,240 - src.web_server - INFO - Web server setup complete
+2025-09-05 09:33:25,030 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-05 09:33:51,653 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-05 09:33:56,559 - src.mcp_subprocess_client - WARNING - MCP client not properly connected
+2025-09-05 09:34:21,464 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-05 09:34:21,527 - src.mcp_subprocess_manager - INFO - Loading MCP server configuration: spendcast-graphdb
+2025-09-05 09:34:21,527 - src.mcp_subprocess_manager - INFO - Starting MCP server: spendcast-graphdb
+2025-09-05 09:34:22,530 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-05 09:34:22,531 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-05 09:34:22,531 - src.mcp_subprocess_manager - INFO - Successfully started MCP server: spendcast-graphdb
+2025-09-05 09:34:22,531 - src.mcp_subprocess_manager - INFO - Started 1/1 MCP servers
+2025-09-05 09:34:22,571 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-05 09:34:22,571 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-05 09:34:22,571 - src.web_server - INFO - Web server setup complete
+2025-09-05 09:34:55,684 - src.intelligent_agent - INFO - Processing user request: What tools are available for querying financial data?
+2025-09-05 09:34:55,684 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-05 09:34:55,687 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-05 09:34:55,687 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-05 09:34:55,687 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-05 09:34:55,689 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-05 09:34:55,689 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-05 09:34:55,689 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-09 08:28:57,474 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:28:57,549 - src.web_server - ERROR - Failed to setup web server: cannot import name 'load_mcp_configs' from 'src.mcp_client' (/Users/neo/Data/workspace/spendcast-benchmark/src/mcp_client.py)
+2025-09-09 08:30:37,110 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:30:37,171 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 08:30:37,171 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 08:30:37,228 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 08:30:37,228 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 08:30:37,228 - src.web_server - INFO - Web server setup complete
+2025-09-09 08:31:08,405 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:31:08,465 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 08:31:08,465 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 08:31:08,505 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 08:31:08,505 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 08:31:08,505 - src.web_server - INFO - Web server setup complete
+2025-09-09 08:32:57,328 - src.mcp_on_demand_manager - INFO - All on-demand MCP clients shut down
+2025-09-09 08:33:54,973 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:33:55,038 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 08:33:55,039 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 08:33:55,078 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 08:33:55,078 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 08:33:55,078 - src.web_server - INFO - Web server setup complete
+2025-09-09 08:34:36,415 - src.intelligent_agent - INFO - Processing user request: What tools are available?
+2025-09-09 08:34:36,416 - src.intelligent_agent - ERROR - Error processing user request: 'MCPOnDemandManager' object has no attribute 'get_available_resources'
+2025-09-09 08:34:36,416 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:34:36,416 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 33, in process_user_request
+    needed_resources = await self.determine_needed_resources(user_query)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 55, in determine_needed_resources
+    available_resources = self.mcp_manager.get_available_resources()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPOnDemandManager' object has no attribute 'get_available_resources'. Did you mean: 'get_available_tools'?
+
+2025-09-09 08:37:49,259 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:37:49,317 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 08:37:49,317 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 08:37:49,354 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 08:37:49,354 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 08:37:49,354 - src.web_server - INFO - Web server setup complete
+2025-09-09 08:37:49,364 - src.mcp_on_demand_manager - INFO - All on-demand MCP clients shut down
+2025-09-09 08:38:01,044 - src.intelligent_agent - INFO - Processing user request: What tools are available?
+2025-09-09 08:38:01,044 - src.intelligent_agent - ERROR - Error processing user request: 'MCPOnDemandManager' object has no attribute 'get_available_resources'
+2025-09-09 08:38:01,044 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:38:01,044 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 33, in process_user_request
+    needed_resources = await self.determine_needed_resources(user_query)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 55, in determine_needed_resources
+    available_resources = self.mcp_manager.get_available_resources()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPOnDemandManager' object has no attribute 'get_available_resources'. Did you mean: 'get_available_tools'?
+
+2025-09-09 08:38:23,981 - src.intelligent_agent - INFO - Processing user request: What tools are available for querying financial data?
+2025-09-09 08:38:23,981 - src.intelligent_agent - ERROR - Error processing user request: 'MCPOnDemandManager' object has no attribute 'get_available_resources'
+2025-09-09 08:38:23,981 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:38:23,982 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 33, in process_user_request
+    needed_resources = await self.determine_needed_resources(user_query)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 55, in determine_needed_resources
+    available_resources = self.mcp_manager.get_available_resources()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPOnDemandManager' object has no attribute 'get_available_resources'. Did you mean: 'get_available_tools'?
+
+2025-09-09 08:38:23,984 - src.intelligent_agent - INFO - Processing user request: Tell me about financial transactions for John Doe
+2025-09-09 08:38:23,984 - src.intelligent_agent - ERROR - Error processing user request: 'MCPOnDemandManager' object has no attribute 'get_available_resources'
+2025-09-09 08:38:23,984 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:38:23,984 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 33, in process_user_request
+    needed_resources = await self.determine_needed_resources(user_query)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 55, in determine_needed_resources
+    available_resources = self.mcp_manager.get_available_resources()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPOnDemandManager' object has no attribute 'get_available_resources'. Did you mean: 'get_available_tools'?
+
+2025-09-09 08:45:09,651 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:45:09,715 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 08:45:09,715 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 08:45:09,756 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 08:45:09,756 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 08:45:09,756 - src.web_server - INFO - Web server setup complete
+2025-09-09 08:45:09,771 - src.mcp_on_demand_manager - INFO - All on-demand MCP clients shut down
+2025-09-09 08:45:25,776 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-09 08:45:25,777 - src.intelligent_agent - ERROR - Error processing user request: 'MCPOnDemandManager' object has no attribute 'get_available_resources'
+2025-09-09 08:45:25,777 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:45:25,778 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 33, in process_user_request
+    needed_resources = await self.determine_needed_resources(user_query)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 55, in determine_needed_resources
+    available_resources = self.mcp_manager.get_available_resources()
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'MCPOnDemandManager' object has no attribute 'get_available_resources'. Did you mean: 'get_available_tools'?
+
+2025-09-09 08:46:26,157 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:46:26,218 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 08:46:26,218 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 08:46:26,256 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 08:46:26,257 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 08:46:26,257 - src.web_server - INFO - Web server setup complete
+2025-09-09 08:46:39,963 - src.intelligent_agent - INFO - Processing user request: What tools are available for querying financial data?
+2025-09-09 08:46:39,963 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:46:39,963 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:46:39,963 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:46:39,963 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    name = tool.name
+           ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:46:39,969 - src.intelligent_agent - INFO - Processing user request: Tell me about financial transactions for John Doe
+2025-09-09 08:46:39,969 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:46:39,969 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:46:39,969 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:46:39,969 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    name = tool.name
+           ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:47:05,793 - src.intelligent_agent - INFO - Processing user request: What tools are available for querying financial data?
+2025-09-09 08:47:05,793 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:47:05,793 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:47:05,793 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:47:05,793 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    name = tool.name
+           ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:47:05,798 - src.intelligent_agent - INFO - Processing user request: Tell me about financial transactions for John Doe
+2025-09-09 08:47:05,798 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:47:05,798 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:47:05,798 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:47:05,798 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    name = tool.name
+           ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:49:52,621 - src.intelligent_agent - INFO - Processing user request: What tools are available for querying financial data?
+2025-09-09 08:49:52,621 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:49:52,621 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:49:52,621 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:49:52,622 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    def _format_available_tools(self, tools: List[Any]) -> str:
+                   ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:49:52,626 - src.intelligent_agent - INFO - Processing user request: Tell me about financial transactions for John Doe
+2025-09-09 08:49:52,626 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:49:52,626 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:49:52,626 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:49:52,627 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    def _format_available_tools(self, tools: List[Any]) -> str:
+                   ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:50:27,155 - src.intelligent_agent - INFO - Processing user request: What tools are available for querying financial data?
+2025-09-09 08:50:27,155 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:50:27,155 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:50:27,155 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:50:27,155 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    def _format_available_tools(self, tools: List[Any]) -> str:
+                   ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:50:27,158 - src.intelligent_agent - INFO - Processing user request: Tell me about financial transactions for John Doe
+2025-09-09 08:50:27,158 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:50:27,158 - src.intelligent_agent - ERROR - Error processing user request: 'dict' object has no attribute 'name'
+2025-09-09 08:50:27,158 - src.intelligent_agent - ERROR - Exception type: <class 'AttributeError'>
+2025-09-09 08:50:27,158 - src.intelligent_agent - ERROR - Traceback: Traceback (most recent call last):
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 34, in process_user_request
+    needed_tools = await self.determine_needed_tools(user_query, needed_resources)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 100, in determine_needed_tools
+    {self._format_available_tools(available_tools)}
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/neo/Data/workspace/spendcast-benchmark/src/intelligent_agent.py", line 367, in _format_available_tools
+    def _format_available_tools(self, tools: List[Any]) -> str:
+                   ^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'name'
+
+2025-09-09 08:50:42,530 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 08:50:42,599 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 08:50:42,599 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 08:50:42,637 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 08:50:42,637 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 08:50:42,637 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-09 08:50:42,637 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 08:50:42,637 - src.web_server - INFO - Web server setup complete
+2025-09-09 08:50:48,783 - src.intelligent_agent - INFO - Processing user request: What tools are available for querying financial data?
+2025-09-09 08:50:48,783 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:50:48,786 - src.intelligent_agent - INFO - Processing user request: Tell me about financial transactions for John Doe
+2025-09-09 08:50:48,786 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:50:48,787 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-09 08:50:49,949 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:50:49,950 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-09 08:50:49,950 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 08:50:49,950 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-09 08:50:50,839 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:50:50,840 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-09 08:50:50,840 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-09 08:51:03,668 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:51:03,669 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  To query financial data from Spendcast GraphDB, you can use the `spendcast_query` tool. This tool allows you to execute SPARQL queries on the database and retrieve the required financial data. Here's...
+2025-09-09 08:51:03,669 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"query": "YOUR_SPARQL_QUERY"}')]
+2025-09-09 08:51:03,669 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'query': 'YOUR_SPARQL_QUERY'}
+2025-09-09 08:51:03,669 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_query on server spendcast-graphdb
+2025-09-09 08:51:03,669 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_query
+2025-09-09 08:51:04,678 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 08:51:04,678 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 08:51:04,678 - src.mcp_subprocess_client - WARNING - Error closing MCP session: 'str' object has no attribute 'aclose'
+2025-09-09 08:51:04,678 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 08:51:04,683 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_query
+2025-09-09 08:51:04,683 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 08:51:06,683 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:51:06,683 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: spendcast_query
+PARAMETERS: {"subject": "John Doe", "predicate": "http://purl.org/goodrelations/v1#invoiceTotal", "objectProperty": "xsd:decimal"}...
+2025-09-09 08:51:06,683 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"subject": "John Doe", "predicate": "http://purl.org/goodrelations/v1#invoiceTotal", "objectProperty": "xsd:decimal"}')]
+2025-09-09 08:51:06,683 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'subject': 'John Doe', 'predicate': 'http://purl.org/goodrelations/v1#invoiceTotal', 'objectProperty': 'xsd:decimal'}
+2025-09-09 08:51:06,683 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_query on server spendcast-graphdb
+2025-09-09 08:51:06,683 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_query
+2025-09-09 08:51:07,691 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 08:51:07,691 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 08:51:07,692 - src.mcp_subprocess_client - WARNING - Error closing MCP session: 'str' object has no attribute 'aclose'
+2025-09-09 08:51:07,692 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 08:51:07,696 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_query
+2025-09-09 08:51:07,696 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 08:51:20,907 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:51:20,908 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 08:51:20,908 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-09 08:51:21,495 - src.intelligent_agent - INFO - Processing user request: Hello, what tools are available?
+2025-09-09 08:51:21,495 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:51:25,184 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:51:25,184 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 08:51:25,185 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-09 08:51:25,185 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-09 08:51:26,272 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:51:26,273 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-09 08:51:26,273 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 08:51:29,787 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:51:29,788 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  Hello! To provide you with some financial data from our Spendcast GraphDB, I will query the database using SPARQL. Here's how I'll do it:
+
+TOOL_CALL: spendcast_query
+PARAMETERS: {"query": "SELECT * W...
+2025-09-09 08:51:29,788 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"query": "SELECT * WHERE {?transaction ?property ?value.}')]
+2025-09-09 08:51:29,788 - src.intelligent_agent - WARNING - No matching closing brace found in parameters, attempting to fix JSON
+2025-09-09 08:51:29,788 - src.intelligent_agent - INFO - Attempting to fix JSON: {"query": ""}
+2025-09-09 08:51:29,788 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'query': ''}
+2025-09-09 08:51:29,788 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_query on server spendcast-graphdb
+2025-09-09 08:51:29,788 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_query
+2025-09-09 08:51:30,791 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 08:51:30,791 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 08:51:30,791 - src.mcp_subprocess_client - WARNING - Error closing MCP session: 'str' object has no attribute 'aclose'
+2025-09-09 08:51:30,791 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 08:51:30,796 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_query
+2025-09-09 08:51:30,796 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 08:51:35,218 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:51:35,218 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 08:51:35,218 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-09 08:52:00,050 - src.intelligent_agent - INFO - Processing user request: Hello, what tools are available?
+2025-09-09 08:52:00,050 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:52:01,060 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:52:01,060 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-09 08:52:01,060 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 08:52:05,974 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:52:05,975 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  Hello! To help you find some financial data, I can use the Spendcast GraphDB and its associated tools. Here, I will query the database to get a general overview of the available data.
+
+TOOL_CALL: spe...
+2025-09-09 08:52:05,975 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"query": "PREFIX dc: <http://purl.org/dc/elements/1.1/>\\nSELECT ?title WHERE {\\n  ?spendcast dc:title ?title .\\n}')]
+2025-09-09 08:52:05,975 - src.intelligent_agent - WARNING - No matching closing brace found in parameters, attempting to fix JSON
+2025-09-09 08:52:05,975 - src.intelligent_agent - INFO - Attempting to fix JSON: {"query": ""}
+2025-09-09 08:52:05,975 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'query': ''}
+2025-09-09 08:52:05,975 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_query on server spendcast-graphdb
+2025-09-09 08:52:05,975 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_query
+2025-09-09 08:52:06,984 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 08:52:06,984 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 08:52:06,984 - src.mcp_subprocess_client - WARNING - Error closing MCP session: 'str' object has no attribute 'aclose'
+2025-09-09 08:52:06,984 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 08:52:06,988 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_query
+2025-09-09 08:52:06,988 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 08:52:10,632 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:52:10,632 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 08:55:36,831 - src.intelligent_agent - INFO - Processing user request: Hello, what tools are available?
+2025-09-09 08:55:36,832 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 08:55:38,012 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:55:38,014 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-09 08:55:38,014 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 08:55:46,575 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:55:46,575 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  Hello! To help you get started with available tools for financial data querying in Spendcast, let me introduce two main tools: spendcast_query and spendcast_get_schema.
+
+If you want to explore the fi...
+2025-09-09 08:55:46,575 - src.intelligent_agent - INFO - Found 2 tool call matches: [('spendcast_query', '{"query": "SELECT * WHERE { ?s ?p ?o . }'), ('spendcast_get_schema', '{}')]
+2025-09-09 08:55:46,575 - src.intelligent_agent - WARNING - No matching closing brace found in parameters, attempting to fix JSON
+2025-09-09 08:55:46,575 - src.intelligent_agent - INFO - Attempting to fix JSON: {"query": ""}
+2025-09-09 08:55:46,575 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'query': ''}
+2025-09-09 08:55:46,575 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_query on server spendcast-graphdb
+2025-09-09 08:55:46,575 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_query
+2025-09-09 08:55:46,578 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-09 08:55:47,581 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 08:55:47,581 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 08:55:47,581 - src.mcp_subprocess_client - WARNING - Error closing MCP session: 'str' object has no attribute 'aclose'
+2025-09-09 08:55:47,581 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 08:55:47,585 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_query
+2025-09-09 08:55:47,585 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 08:55:47,585 - src.intelligent_agent - INFO - Executing tool call: spendcast_get_schema with params: {}
+2025-09-09 08:55:47,585 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_get_schema on server spendcast-graphdb
+2025-09-09 08:55:47,585 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_get_schema
+2025-09-09 08:55:48,593 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 08:55:48,594 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 08:55:48,594 - src.mcp_subprocess_client - WARNING - Error closing MCP session: 'str' object has no attribute 'aclose'
+2025-09-09 08:55:48,594 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 08:55:48,598 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_get_schema
+2025-09-09 08:55:48,598 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 08:56:00,293 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 08:56:00,294 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 08:56:00,294 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-09 09:10:43,750 - src.intelligent_agent - INFO - Processing user request: Hello, what tools are available?
+2025-09-09 09:10:43,750 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 09:10:47,583 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 09:10:47,583 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query', 'spendcast_get_schema']
+2025-09-09 09:10:47,583 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 09:10:55,587 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 09:10:55,587 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  Hello! To provide you with financial data from our Spendcast GraphDB, I will use the `spendcast_query` tool. This tool allows us to query the database using SPARQL, which is a standard query language...
+2025-09-09 09:10:55,587 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"query": "PREFIX spndc: <http://purl.org/spendcast#> SELECT ?account ?balance WHERE {?account a spndc:Account. FILTER (lang(label) = \'en\') OPTIONAL {?account spndc:accountBalance ?balance}')]
+2025-09-09 09:10:55,587 - src.intelligent_agent - WARNING - No matching closing brace found in parameters, attempting to fix JSON
+2025-09-09 09:10:55,588 - src.intelligent_agent - INFO - Attempting to fix JSON: {"query": ""}
+2025-09-09 09:10:55,588 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'query': ''}
+2025-09-09 09:10:55,588 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_query on server spendcast-graphdb
+2025-09-09 09:10:55,588 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_query
+2025-09-09 09:10:56,593 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 09:10:56,593 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 09:10:56,594 - src.mcp_subprocess_client - WARNING - Error closing MCP session: 'str' object has no attribute 'aclose'
+2025-09-09 09:10:56,594 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 09:10:56,598 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_query
+2025-09-09 09:10:56,598 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 09:11:01,629 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 09:11:01,629 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 09:17:25,051 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 09:17:25,120 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 09:17:25,120 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 09:17:25,161 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 09:17:25,161 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 09:17:25,161 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-09 09:17:25,161 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 09:17:25,161 - src.web_server - INFO - Web server setup complete
+2025-09-09 09:17:25,179 - src.mcp_on_demand_manager - INFO - All on-demand MCP clients shut down
+2025-09-09 09:17:44,708 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 09:17:44,761 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 09:17:44,761 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 09:17:44,794 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 09:17:44,794 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 09:17:44,794 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-09 09:17:44,794 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 09:17:44,794 - src.web_server - INFO - Web server setup complete
+2025-09-09 09:18:03,846 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-09 09:18:03,848 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 09:18:05,306 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 09:18:05,308 - src.intelligent_agent - INFO - Determined needed tools: ['spendcast_query']
+2025-09-09 09:18:05,308 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-09 09:18:10,250 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 09:18:10,253 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  To gather information about Jeanine Marie Blumenthal's financial transactions, we can use the `spendcast_query` tool to query the Spendcast GraphDB for this data. Here is how you can format the call:...
+2025-09-09 09:18:10,256 - src.intelligent_agent - INFO - Found 1 tool call matches: [('spendcast_query', '{"subject": "Jeanine Marie Blumenthal", "predicate": "financialTransaction"}')]
+2025-09-09 09:18:10,258 - src.intelligent_agent - INFO - Executing tool call: spendcast_query with params: {'subject': 'Jeanine Marie Blumenthal', 'predicate': 'financialTransaction'}
+2025-09-09 09:18:10,258 - src.mcp_on_demand_manager - INFO - Attempting to call tool spendcast_query on server spendcast-graphdb
+2025-09-09 09:18:10,258 - src.mcp_on_demand_client - INFO - Starting on-demand MCP server for tool: spendcast_query
+2025-09-09 09:18:11,278 - src.mcp_subprocess_client - INFO - Connecting to MCP subprocess: spendcast-graphdb
+2025-09-09 09:18:11,278 - src.mcp_subprocess_client - INFO - Connected to subprocess: spendcast-graphdb
+2025-09-09 09:18:11,280 - src.mcp_subprocess_client - INFO - MCP client disconnected
+2025-09-09 09:18:11,302 - src.mcp_on_demand_client - INFO - Tool call completed: spendcast_query
+2025-09-09 09:18:11,302 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 09:18:24,179 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 09:18:24,181 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully

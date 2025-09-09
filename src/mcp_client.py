@@ -28,6 +28,31 @@ class MCPServerConfig:
         return f"MCPServerConfig(name='{self.name}', command='{self.command}', args={self.args}, cwd='{self.cwd}')"
 
 
+def load_mcp_configs() -> Dict[str, MCPServerConfig]:
+    """Load MCP server configurations from config.json."""
+    import json
+    from pathlib import Path
+    
+    config_file = Path("config.json")
+    if not config_file.exists():
+        logger.warning("config.json not found, using empty configuration")
+        return {}
+    
+    try:
+        with open(config_file, 'r') as f:
+            config_data = json.load(f)
+        
+        configs = {}
+        for server_name, server_config in config_data.get("mcpServers", {}).items():
+            configs[server_name] = MCPServerConfig(server_name, server_config)
+            logger.info(f"Loaded MCP server config: {server_name}")
+        
+        return configs
+    except Exception as e:
+        logger.error(f"Failed to load MCP configurations: {e}")
+        return {}
+
+
 class MCPClient:
     """MCP client for managing connections and tool interactions."""
     
@@ -59,8 +84,6 @@ class MCPClient:
                 env=env
             )
             
-            # Use stdio_client but run it in a way that doesn't block the main thread
-            # The key is to not let the MCP server output interfere with our CLI
             async with stdio_client(server_params) as (read_stream, write_stream):
                 # Create a client session manually
                 from mcp import ClientSession
