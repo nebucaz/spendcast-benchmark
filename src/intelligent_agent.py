@@ -5,6 +5,7 @@ import logging
 import re
 from typing import List, Dict, Any, Optional
 from .llm_client import LLMClient
+from .config import get_settings
 
 logger = logging.getLogger(__name__)
 
@@ -17,6 +18,7 @@ class IntelligentAgent:
         self.llm_client = llm_client
         self.mcp_manager = mcp_manager
         self.web_server = web_server
+        self.settings = get_settings()
     
     def _log_debug(self, category: str, message: str, data: Optional[Dict[str, Any]] = None):
         """Log debug information to the web server if available."""
@@ -105,9 +107,13 @@ class IntelligentAgent:
         Only respond with the tool names, nothing else.
         """
         
-        self._log_debug("AGENT->LLM", "Tool determination request", {"prompt": prompt})
+        # Enforce prompt length limit
+        max_chars = getattr(self.settings, 'llm_max_prompt_chars', 12000)
+        prompt_to_send = prompt if len(prompt) <= max_chars else prompt[:max_chars]
+
+        self._log_debug("AGENT->LLM", "Tool determination request", {"prompt": prompt_to_send})
         
-        response = await self.llm_client.generate_response(prompt)
+        response = await self.llm_client.generate_response(prompt_to_send)
         if not response:
             self._log_debug("LLM->AGENT", "Tool determination failed", {"error": "No response generated"})
             return []
@@ -127,10 +133,7 @@ class IntelligentAgent:
         # Filter tools to only those that are needed
         relevant_tools = []
         for tool in available_tools:
-            if isinstance(tool, dict):
-                tool_name = tool.get("name", "")
-            else:
-                tool_name = tool.name
+            tool_name = tool.get("name", "") if isinstance(tool, dict) else getattr(tool, "name", "")
             if tool_name in needed_tools:
                 relevant_tools.append(tool)
         
@@ -155,9 +158,13 @@ class IntelligentAgent:
         Provide a helpful response that addresses the user's request.
         """
         
-        self._log_debug("AGENT->LLM", "Execution request", {"prompt": prompt})
+        # Enforce prompt length limit
+        max_chars = getattr(self.settings, 'llm_max_prompt_chars', 12000)
+        prompt_to_send = prompt if len(prompt) <= max_chars else prompt[:max_chars]
+
+        self._log_debug("AGENT->LLM", "Execution request", {"prompt": prompt_to_send})
         
-        response = await self.llm_client.generate_response(prompt)
+        response = await self.llm_client.generate_response(prompt_to_send)
         if not response:
             self._log_debug("LLM->AGENT", "Execution failed", {"error": "No response generated"})
             return "I couldn't generate a response for your request."
@@ -183,24 +190,39 @@ class IntelligentAgent:
         logger.info(f"Processing LLM response for tool calls: {response[:200]}...")
         
         # Look for tool call patterns in the response
-        tool_call_pattern = r'TOOL_CALL:\s*(\w+)\s*\nPARAMETERS:\s*(\{.*?\})'
-        matches = re.findall(tool_call_pattern, response, re.MULTILINE | re.DOTALL)
+        # Support both with-parameters and without-parameters formats
+        pattern_with_params = r'TOOL_CALL:\s*([A-Za-z0-9_]+)[^\S\r\n]*\r?\nPARAMETERS:\s*(\{[\s\S]*?\})'
+        pattern_without_params = r'TOOL_CALL:\s*([A-Za-z0-9_]+)\b'
+
+        matches_with_params = re.findall(pattern_with_params, response, re.MULTILINE | re.DOTALL)
+        logger.info(f"Found {len(matches_with_params)} tool calls with parameters: {matches_with_params}")
+
+        # Build a map for easy de-duplication and to attach params
+        tool_calls: list[tuple[str, str]] = list(matches_with_params)
+        seen_tools = {name for name, _ in matches_with_params}
+
+        # Now capture TOOL_CALL without PARAMETERS as empty-params calls
+        matches_without_params = re.findall(pattern_without_params, response, re.MULTILINE)
+        for name in matches_without_params:
+            if name not in seen_tools:
+                tool_calls.append((name, '{}'))
+                seen_tools.add(name)
+
+        logger.info(f"Total tool calls detected: {len(tool_calls)} -> {tool_calls}")
         
-        logger.info(f"Found {len(matches)} tool call matches: {matches}")
-        
-        if not matches:
+        if not tool_calls:
             return response
         
         # Execute tool calls
         tool_results = []
-        for tool_name, params_str in matches:
+        for tool_name, params_str in tool_calls:
             try:
                 # Parse parameters with better error handling
                 import json
                 params = self._parse_tool_parameters(params_str)
                 
                 if params is None:
-                    tool_results.append(f"Tool '{tool_name}' parameters could not be parsed")
+                    tool_results.append(f"Tool '{tool_name}' parameters invalid or could not be parsed")
                     self._log_debug("AGENT->MCP", f"Tool call request failed: {tool_name}", {
                         "tool_name": tool_name, 
                         "error": "Parameters could not be parsed", 
@@ -339,9 +361,13 @@ class IntelligentAgent:
         Summarize the key information from the tool results and answer their question directly.
         """
         
-        self._log_debug("AGENT->LLM", "Final response generation request", {"prompt": prompt})
+        # Enforce prompt length limit
+        max_chars = getattr(self.settings, 'llm_max_prompt_chars', 12000)
+        prompt_to_send = prompt if len(prompt) <= max_chars else prompt[:max_chars]
+
+        self._log_debug("AGENT->LLM", "Final response generation request", {"prompt": prompt_to_send})
         
-        final_response = await self.llm_client.generate_response(prompt)
+        final_response = await self.llm_client.generate_response(prompt_to_send)
         
         if not final_response:
             self._log_debug("LLM->AGENT", "Final response generation failed", {"error": "No response generated"})

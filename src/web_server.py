@@ -12,7 +12,6 @@ import uvicorn
 from .mcp_on_demand_manager import MCPOnDemandManager
 from .llm_client import LLMClient
 from .intelligent_agent import IntelligentAgent
-from .conversation import Conversation
 
 logger = logging.getLogger(__name__)
 
@@ -130,7 +129,7 @@ class WebServer:
                 return {"servers": []}
             
             servers = []
-            status = self.mcp_manager.get_server_status()
+            status = await self.mcp_manager.get_server_status()
             for server_name, server_status in status.items():
                 servers.append({
                     "name": server_name,

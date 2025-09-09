@@ -35,7 +35,7 @@ class OllamaClient:
         self.settings = get_settings()
         self.base_url = self.settings.ollama_host
         self.default_model = self.settings.ollama_model
-        self.client = httpx.AsyncClient(timeout=30.0)
+        self.client = httpx.AsyncClient(timeout=60.0)
         
     async def close(self):
         """Close the HTTP client."""
@@ -62,10 +62,14 @@ class OllamaClient:
         if not model:
             model = self.default_model
             
+        # Apply context/window configuration
+        options: Dict[str, Any] = {"num_ctx": self.settings.ollama_num_ctx}
+
         request_data = LLMRequest(
             model=model,
             prompt=prompt,
-            stream=False
+            stream=False,
+            options=options
         )
         
         try:

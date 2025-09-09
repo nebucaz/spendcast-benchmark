@@ -16,6 +16,10 @@ class Settings(BaseSettings):
     # Ollama Configuration
     ollama_host: str = Field(default="http://localhost:11434")
     ollama_model: str = Field(default="mistral")
+    ollama_num_ctx: int = Field(default=4096)
+    
+    # LLM Safety Limits
+    llm_max_prompt_chars: int = Field(default=12000)
     
     # Logging Configuration
     log_level: str = Field(default="INFO")

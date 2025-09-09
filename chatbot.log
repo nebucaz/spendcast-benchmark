@@ -33894,3 +33894,147 @@ If you want to explore the fi...
 2025-09-09 09:18:11,302 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
 2025-09-09 09:18:24,179 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2025-09-09 09:18:24,181 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 14:28:46,046 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 14:28:46,110 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 14:28:46,110 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 14:28:46,150 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 14:28:46,151 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 14:28:46,151 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-09 14:28:46,151 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 14:28:46,580 - src.web_server - INFO - Web server setup complete
+2025-09-09 14:32:54,114 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 14:32:54,185 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 14:32:54,185 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 14:32:54,235 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 14:32:54,235 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 14:32:54,720 - src.web_server - INFO - Web server setup complete
+2025-09-09 14:33:19,948 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 14:33:20,012 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 14:33:20,015 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 14:33:20,055 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 14:33:20,055 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 14:33:20,446 - src.web_server - INFO - Web server setup complete
+2025-09-09 14:33:20,459 - src.mcp_on_demand_manager - INFO - All on-demand MCP clients shut down
+2025-09-09 14:33:31,845 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 14:33:31,903 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 14:33:31,903 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 14:33:31,945 - src.llm_client - ERROR - Error listing models: All connection attempts failed
+2025-09-09 14:33:31,945 - src.llm_client - ERROR - No models available on Ollama server
+2025-09-09 14:33:32,328 - src.web_server - INFO - Web server setup complete
+2025-09-09 14:33:45,690 - src.intelligent_agent - INFO - Processing user request: uv run python -m src.main --web
+2025-09-09 14:33:45,691 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 14:33:46,058 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-09 14:33:46,058 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-09 14:33:46,431 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-09 14:33:46,431 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 14:34:11,936 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-09 14:34:11,936 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 14:34:12,322 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-09 14:34:12,322 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-09 14:34:12,689 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-09 14:34:12,689 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 14:35:18,713 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-09 14:35:18,714 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 14:35:19,101 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-09 14:35:19,101 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-09 14:35:19,498 - src.llm_client - ERROR - Error generating LLM response: All connection attempts failed
+2025-09-09 14:35:19,499 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 14:37:25,663 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-09 14:37:25,665 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 14:37:26,043 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-09-09 14:37:26,043 - src.llm_client - ERROR - LLM generation failed: 404 - {"error":"model 'mistral' not found"}
+2025-09-09 14:37:26,043 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-09 14:37:26,413 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-09-09 14:37:26,413 - src.llm_client - ERROR - LLM generation failed: 404 - {"error":"model 'mistral' not found"}
+2025-09-09 14:37:26,413 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 14:40:12,553 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 14:40:12,627 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 14:40:12,627 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 14:40:12,680 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 14:40:12,680 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 14:40:12,680 - src.llm_client - INFO - Using default model: mistral:7b
+2025-09-09 14:40:12,680 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 14:40:13,218 - src.web_server - INFO - Web server setup complete
+2025-09-09 14:40:13,239 - src.mcp_on_demand_manager - INFO - All on-demand MCP clients shut down
+2025-09-09 14:40:41,631 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-09 14:40:41,631 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 14:40:42,061 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-09-09 14:40:42,061 - src.llm_client - ERROR - LLM generation failed: 404 - {"error":"model 'mistral' not found"}
+2025-09-09 14:40:42,061 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-09 14:40:42,485 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-09-09 14:40:42,485 - src.llm_client - ERROR - LLM generation failed: 404 - {"error":"model 'mistral' not found"}
+2025-09-09 14:40:42,485 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 14:42:17,709 - src.intelligent_agent - INFO - Processing user request: tell me more about the financial transactions of Jeanine Marie Blumenthal
+2025-09-09 14:42:17,711 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 14:42:18,268 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-09-09 14:42:18,269 - src.llm_client - ERROR - LLM generation failed: 404 - {"error":"model 'mistral' not found"}
+2025-09-09 14:42:18,269 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 0
+2025-09-09 14:42:18,648 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-09-09 14:42:18,649 - src.llm_client - ERROR - LLM generation failed: 404 - {"error":"model 'mistral' not found"}
+2025-09-09 14:42:18,649 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 14:57:14,296 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 14:57:14,364 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 14:57:14,364 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 14:57:14,410 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 14:57:14,410 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 14:57:14,410 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-09 14:57:14,410 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 14:57:14,924 - src.web_server - INFO - Web server setup complete
+2025-09-09 14:57:57,671 - src.intelligent_agent - INFO - Processing user request: hi
+2025-09-09 14:57:57,672 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 14:58:03,632 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 14:58:03,632 - src.intelligent_agent - INFO - Determined needed tools: ['get_schema_help']
+2025-09-09 14:58:03,632 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-09 14:58:21,137 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 14:58:21,535 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: get_schema_help
+
+This tool will help you understand the structure of our financial data store and provide some examples for SPARQL queries. Let me fetch that for you now...
+
+Here's a brief...
+2025-09-09 14:58:21,536 - src.intelligent_agent - INFO - Found 0 tool call matches: []
+2025-09-09 14:58:21,536 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 15:03:47,120 - src.intelligent_agent - INFO - Processing user request: TOOL_CALL: get_schema_help
+2025-09-09 15:03:47,121 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 15:03:54,534 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 15:03:54,535 - src.intelligent_agent - INFO - Determined needed tools: ['get_schema_help']
+2025-09-09 15:03:54,535 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-09 15:03:54,535 - src.web_server - ERROR - Failed to send debug log to WebSocket: 
+2025-09-09 15:03:57,249 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 15:03:57,674 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: get_schema_help
+
+No additional parameters required for this tool. The requested schema documentation and query examples will be provided shortly....
+2025-09-09 15:03:57,675 - src.intelligent_agent - INFO - Found 0 tool call matches: []
+2025-09-09 15:03:57,675 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 15:03:57,675 - src.web_server - ERROR - WebSocket error: Cannot call "send" once a close message has been sent.
+2025-09-09 15:05:05,061 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 15:05:05,131 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 15:05:05,131 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 15:05:05,181 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 15:05:05,181 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 15:05:05,181 - src.llm_client - INFO - Using default model: mistral:7b
+2025-09-09 15:05:05,181 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 15:05:05,716 - src.web_server - INFO - Web server setup complete
+2025-09-09 15:05:35,723 - src.intelligent_agent - INFO - Processing user request: hi
+2025-09-09 15:05:35,725 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 15:05:41,739 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 15:05:41,742 - src.intelligent_agent - INFO - Determined needed tools: ['get_schema_help', 'execute_sparql']
+2025-09-09 15:05:41,742 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 15:06:02,635 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 15:06:03,093 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: get_schema_help()
+
+This will provide you with the complete schema information and examples to help you write your SPARQL queries. Remember, it is recommended to use this tool before writin...
+2025-09-09 15:06:03,094 - src.intelligent_agent - INFO - Found 0 tool calls with parameters: []
+2025-09-09 15:06:03,094 - src.intelligent_agent - INFO - Total tool calls detected: 1 -> [('get_schema_help', '{}')]
+2025-09-09 15:06:03,094 - src.intelligent_agent - INFO - Executing tool call: get_schema_help with params: {}
+2025-09-09 15:06:03,094 - src.mcp_on_demand_manager - INFO - Attempting to call tool get_schema_help on server spendcast-graphdb
+2025-09-09 15:06:03,421 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 15:06:33,478 - src.llm_client - ERROR - Error generating LLM response: 
+2025-09-09 15:06:33,480 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 15:35:03,770 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 15:35:03,847 - src.mcp_client - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 15:35:03,847 - src.mcp_on_demand_manager - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 15:35:03,901 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 15:35:03,901 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 15:35:03,901 - src.llm_client - INFO - Using default model: mistral:7b
+2025-09-09 15:35:03,901 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 15:35:04,428 - src.web_server - INFO - Web server setup complete
