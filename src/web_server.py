@@ -9,7 +9,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from .mcp_on_demand_manager import MCPOnDemandManager
+from .mcp import MCPOnDemandManager
 from .llm_client import LLMClient
 from .intelligent_agent import IntelligentAgent
 
@@ -632,7 +632,7 @@ class WebServer:
         """Setup the web server components."""
         try:
             # Initialize MCP on-demand manager
-            from .mcp_client import load_mcp_configs
+            from .mcp import load_mcp_configs
             configs = load_mcp_configs()
             self.mcp_manager = MCPOnDemandManager(configs)
             

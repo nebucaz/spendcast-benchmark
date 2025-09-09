@@ -10,7 +10,7 @@ from rich.panel import Panel
 from rich.table import Table
 from rich import box
 
-from .mcp_server_manager import MCPServerManager
+from .mcp import MCPServerManager
 from .llm_client import LLMClient
 
 logger = logging.getLogger(__name__)

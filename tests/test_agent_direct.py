@@ -5,8 +5,8 @@ Direct test of the intelligent agent to debug the issue.
 
 import asyncio
 import logging
-from src.mcp_client import load_mcp_configs
-from src.mcp_on_demand_manager import MCPOnDemandManager
+from src.mcp import load_mcp_configs
+from src.mcp import MCPOnDemandManager
 from src.llm_client import LLMClient
 from src.intelligent_agent import IntelligentAgent
 

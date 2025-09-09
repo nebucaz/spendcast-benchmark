@@ -12,7 +12,7 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from src.mcp_client import MCPServerConfig
+from src.mcp import MCPServerConfig
 
 
 async def test_simple_mcp_start():

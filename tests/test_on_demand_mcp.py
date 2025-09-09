@@ -11,8 +11,8 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from src.mcp_client import MCPServerConfig
-from src.mcp_on_demand_manager import MCPOnDemandManager
+from src.mcp import MCPServerConfig
+from src.mcp import MCPOnDemandManager
 
 
 async def test_on_demand_mcp():

@@ -34038,3 +34038,14 @@ This will provide you with the complete schema information and examples to help 
 2025-09-09 15:35:03,901 - src.llm_client - INFO - Using default model: mistral:7b
 2025-09-09 15:35:03,901 - src.llm_client - INFO - LLM client ready with model: mistral:7b
 2025-09-09 15:35:04,428 - src.web_server - INFO - Web server setup complete
+2025-09-09 17:47:02,760 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 17:47:02,922 - src.mcp - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 17:47:02,922 - src.mcp - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 17:47:02,975 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 17:47:02,976 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 17:47:02,976 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-09 17:47:02,976 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 17:47:02,976 - src.mcp - INFO - Connecting to MCP server: temp
+2025-09-09 17:47:11,974 - src.mcp - WARNING - Error closing MCP session: 'ClientSession' object has no attribute 'aclose'
+2025-09-09 17:47:12,039 - src.mcp - WARNING - Error closing stdio context: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-09 17:47:12,039 - src.mcp - INFO - MCP on-demand client disposed

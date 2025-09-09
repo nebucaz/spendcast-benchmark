@@ -14,8 +14,8 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from src.mcp_client import MCPServerConfig
-from src.mcp_subprocess_client import MCPSubprocessClient
+from src.mcp import MCPServerConfig
+from src.mcp import MCPClient
 
 
 async def test_mcp_non_blocking():
