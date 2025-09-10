@@ -34049,3 +34049,91 @@ This will provide you with the complete schema information and examples to help 
 2025-09-09 17:47:11,974 - src.mcp - WARNING - Error closing MCP session: 'ClientSession' object has no attribute 'aclose'
 2025-09-09 17:47:12,039 - src.mcp - WARNING - Error closing stdio context: unhandled errors in a TaskGroup (1 sub-exception)
 2025-09-09 17:47:12,039 - src.mcp - INFO - MCP on-demand client disposed
+2025-09-09 17:52:33,980 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 17:54:16,768 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 17:54:16,828 - src.mcp - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 17:54:16,828 - src.web_server - ERROR - Failed to setup web server: name 'MCPOnDemandClient' is not defined
+2025-09-09 17:54:43,518 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-09 17:54:43,570 - src.mcp - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-09 17:54:43,570 - src.mcp - INFO - Created on-demand client for: spendcast-graphdb
+2025-09-09 17:54:43,614 - httpx - INFO - HTTP Request: GET http://localhost:11434/api/tags "HTTP/1.1 200 OK"
+2025-09-09 17:54:43,614 - src.llm_client - INFO - Found 1 models: ['mistral:7b']
+2025-09-09 17:54:43,614 - src.llm_client - INFO - Default model not available, using: mistral:7b
+2025-09-09 17:54:43,614 - src.llm_client - INFO - LLM client ready with model: mistral:7b
+2025-09-09 17:54:43,614 - src.mcp - INFO - Connecting to MCP server: temp
+2025-09-09 17:55:25,863 - src.intelligent_agent - INFO - Processing user request: get financial transactions of Jeanine Marei Blumenthal
+2025-09-09 17:55:25,866 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 17:55:34,694 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:55:34,695 - src.intelligent_agent - INFO - Determined needed tools: ['execute_sparql', 'get_schema_help']
+2025-09-09 17:55:34,696 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 17:55:48,967 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:55:49,450 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: get_schema_help()
+
+This will help you write your SPARQL query to get the financial transactions of Jeanine Marei Blumenthal. The schema documentation and examples are available after the c...
+2025-09-09 17:55:49,450 - src.intelligent_agent - INFO - Found 0 tool calls with parameters: []
+2025-09-09 17:55:49,450 - src.intelligent_agent - INFO - Total tool calls detected: 1 -> [('get_schema_help', '{}')]
+2025-09-09 17:55:49,450 - src.intelligent_agent - INFO - Executing tool call: get_schema_help with params: {}
+2025-09-09 17:55:49,450 - src.mcp_on_demand_manager - INFO - Attempting to call tool get_schema_help on server spendcast-graphdb
+2025-09-09 17:55:49,780 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 17:56:27,401 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:56:27,404 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 17:57:31,074 - src.intelligent_agent - INFO - Processing user request: why didn't you execute the query using the execute_sparql tool?
+2025-09-09 17:57:31,077 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 17:57:37,345 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:57:37,347 - src.intelligent_agent - INFO - Determined needed tools: ['get_schema_help', 'get_schema_content']
+2025-09-09 17:57:37,348 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 17:57:41,043 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:57:41,414 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: get_schema_help
+
+No parameters required for this tool. It will return schema documentation and query examples directly related to the financial data store. This should help you write an ap...
+2025-09-09 17:57:41,414 - src.intelligent_agent - INFO - Found 0 tool calls with parameters: []
+2025-09-09 17:57:41,414 - src.intelligent_agent - INFO - Total tool calls detected: 1 -> [('get_schema_help', '{}')]
+2025-09-09 17:57:41,414 - src.intelligent_agent - INFO - Executing tool call: get_schema_help with params: {}
+2025-09-09 17:57:41,414 - src.mcp_on_demand_manager - INFO - Attempting to call tool get_schema_help on server spendcast-graphdb
+2025-09-09 17:57:41,731 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 17:58:06,711 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:58:06,714 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 17:59:14,550 - src.intelligent_agent - INFO - Processing user request: no. the request was to get the financial transactions of Jeanine Marie Blumenthal - not to present a SPARQL query.
+2025-09-09 17:59:14,551 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 17:59:20,690 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:59:20,693 - src.intelligent_agent - INFO - Determined needed tools: ['get_schema_help', 'execute_sparql']
+2025-09-09 17:59:20,693 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 2
+2025-09-09 17:59:33,014 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 17:59:33,384 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: get_schema_help()
+
+This will help you find the necessary schema information and examples to write a SPARQL query for getting Jeanine Marie Blumenthal's financial transactions. The tool pro...
+2025-09-09 17:59:33,384 - src.intelligent_agent - INFO - Found 0 tool calls with parameters: []
+2025-09-09 17:59:33,384 - src.intelligent_agent - INFO - Total tool calls detected: 1 -> [('get_schema_help', '{}')]
+2025-09-09 17:59:33,384 - src.intelligent_agent - INFO - Executing tool call: get_schema_help with params: {}
+2025-09-09 17:59:33,384 - src.mcp_on_demand_manager - INFO - Attempting to call tool get_schema_help on server spendcast-graphdb
+2025-09-09 17:59:33,702 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 18:00:12,855 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 18:00:12,858 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-09 18:00:45,476 - src.intelligent_agent - INFO - Processing user request: please execute the query using the execute_sparql tool.
+2025-09-09 18:00:45,477 - src.intelligent_agent - INFO - No resources available, skipping resource determination
+2025-09-09 18:00:51,373 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 18:00:51,374 - src.intelligent_agent - INFO - Determined needed tools: ['get_schema_help']
+2025-09-09 18:00:51,374 - src.intelligent_agent - INFO - Phase 1 complete - Resources needed: 0, Tools needed: 1
+2025-09-09 18:00:56,294 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 18:00:56,665 - src.intelligent_agent - INFO - Processing LLM response for tool calls:  TOOL_CALL: get_schema_help
+
+This tool will help you understand the schema of our financial data store and provide you with some query examples. Let me get started for you now.
+
+Once the tool finishes...
+2025-09-09 18:00:56,665 - src.intelligent_agent - INFO - Found 0 tool calls with parameters: []
+2025-09-09 18:00:56,665 - src.intelligent_agent - INFO - Total tool calls detected: 1 -> [('get_schema_help', '{}')]
+2025-09-09 18:00:56,665 - src.intelligent_agent - INFO - Executing tool call: get_schema_help with params: {}
+2025-09-09 18:00:56,665 - src.mcp_on_demand_manager - INFO - Attempting to call tool get_schema_help on server spendcast-graphdb
+2025-09-09 18:00:56,982 - src.mcp_on_demand_manager - INFO - Tool call successful on spendcast-graphdb
+2025-09-09 18:01:31,617 - httpx - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-09-09 18:01:31,619 - src.intelligent_agent - INFO - Phase 2 complete - Request processed successfully
+2025-09-10 06:47:10,290 - src.mcp - WARNING - Error closing MCP session: 'ClientSession' object has no attribute 'aclose'
+2025-09-10 06:47:10,375 - src.mcp - WARNING - Error closing stdio context: unhandled errors in a TaskGroup (1 sub-exception)
+2025-09-10 06:47:10,376 - src.mcp - INFO - MCP on-demand client disposed
+2025-09-10 06:47:14,172 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-10 06:47:14,172 - src.mcp - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-10 06:47:21,361 - __main__ - INFO - Starting Spendcast Benchmark chatbot...
+2025-09-10 06:47:21,362 - src.mcp - INFO - Loaded MCP server config: spendcast-graphdb
+2025-09-10 06:47:21,362 - src.mcp - INFO - Starting MCP server: spendcast-graphdb
+2025-09-10 06:47:21,362 - src.mcp - ERROR - Error starting MCP server spendcast-graphdb: 'MCPClient' object has no attribute 'connect'
+2025-09-10 06:47:21,362 - src.mcp - INFO - Started 0/1 MCP servers
